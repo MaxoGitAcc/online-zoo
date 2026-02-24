@@ -76,6 +76,190 @@ body {
     box-shadow: 0 4px 30px 0 rgba(245, 128, 33, 0.30)
 }
 
+/* ******* WELCOME SECTION ********** */
+.welcome-section {
+    padding-bottom: 120px;
+    background: #ffffff;
+}
+
+.welcome-container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7rem;
+}
+
+/* first */
+.first-intrudaction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.intro1 {
+    width: 520px;
+}
+
+.intro1 h2 {
+    font-size: 54px;
+    font-weight: 600;
+    color: #00A092;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.intro1 p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.intro-image1 {
+    width: 800px;
+    height: 531px;
+    border-radius: 5px;
+}
+
+.intro-image1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 2nd */
+.second-intrudaction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.intro2 {
+    width: 520px;
+}
+
+.intro2 h2 {
+    font-size: 54px;
+    font-weight: 600;
+    color: #00A092;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.intro2 p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.intro-image2 {
+    width: 800px;
+    height: 531px;
+    border-radius: 5px;
+}
+
+.intro-image2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* welcome-footer */
+.welcome-footer {
+    background-color: #20113D;
+    color: white;
+    width: 100%;
+    height: 220px;
+    margin-top: 6rem;
+    display: flex;
+    align-items: center;
+}
+
+.wlfooter-container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wlfLeft {
+    display: flex;
+    flex-direction: column;
+}
+
+.wlfLeft h3 {
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0 0 16px 0;
+}
+
+.wlfLeft p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    width: 609px;
+    margin: 0;
+}
+
+.wlfRigth {
+    display: flex;
+    flex-direction: column;
+}
+
+.wlfRigth-donation {
+    width: 300px;
+    height: 60px;
+    display: flex;
+    align-items: stretch;
+
+    border: 2px solid rgba(255, 200, 210, 0.55);
+    border-radius: 5px;
+    overflow: hidden;
+    background: rgba(80, 20, 65, 0.55);
+}
+
+.wlfRigth-donation input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    background: transparent;
+
+    padding: 0 14px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.wlfRigth-donation input::placeholder {
+    color: rgba(255, 220, 230, 0.85);
+}
+
+.wlfRigth-donation .donate-btn {
+    width: 72px;
+    border: 0;
+    background: #F58021;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wlfRigth-donation .donate-btn:hover {
+    background-color: #D26004;
+}
 
 /* ******** POPUP  ******** */
 .popup-overlay {
