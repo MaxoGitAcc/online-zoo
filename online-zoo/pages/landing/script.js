@@ -154,6 +154,68 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMeetPetsButtons();
 });
 
+// ******** user opinion ********* //
+function renderUserOpnionCards() {
+  const card = document.querySelector(".user-opinion-msgs");
+  if(!card) return;
+
+  const msgs = [
+    {
+      name: "Karen Maithlan",
+      msg: `I am writing to thank you for your mission is
+            to bring people closer to nature! Like myself,
+            children were very impressed by the
+            opportunity to explore  the  life of incredible
+            animals in  real-time.`,
+      date: "New Jersey, June 2020"
+    },
+    {
+      name: "Carol Larsen",
+      msg: `We so enjoy the ever-evolving selection of animals from around the globe.
+            THANK YOU for sharing these fascinating animal friends with us so
+            that we may learn and increase our understanding of the animal kingdom.`,
+      date: "Toronto, November 2020"
+    },
+    {
+      name: "C. Stockman",
+      msg: `A fantastic experience for kids and adults alike!
+            If anyone is looking for an attraction that educates people
+            on wild animals - it's for you! I highly recommend seeing
+            for yourself the variety of animals on your screen.`,
+      date: "London, February 2020"
+    },
+    {
+      name: "Tomas Ray",
+      msg: `I want to thank you for the amazing sites you find to put your
+            cameras to let each of us see things that we would probably
+            never see on our own. There are so many positives on Zoo
+            Online and I'm grateful for it. Thank you so much!`,
+      date: "Amsterdam, June 2020"
+    }
+  ]
+
+  card.innerHTML = "";
+
+  msgs.forEach((i) => {
+    const msgEl = document.createElement("article");
+    msgEl.className = "user-opinion-msg";
+
+    msgEl.innerHTML = `
+      <div class="user-opinion-wrap">
+        <h3>“</h3>
+        <h4>${i.date}</h4>
+        <p>${i.msg}</p>
+        <span>${i.name}</span>
+      </div>
+    `;
+
+    card.appendChild(msgEl);
+  })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderUserOpnionCards();
+});
 
 // ******** POPUP ********* //
 function openWelcomePopup() {

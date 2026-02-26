@@ -538,6 +538,7 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
+    cursor: pointer;
 
     width: fit-content;
     max-width: max-content;
@@ -554,6 +555,206 @@ body {
     padding: 26px 45px;
 }
 
+.feedBtn:hover {
+    background: #D26004;
+    box-shadow: 0 4px 30px 0 rgba(245, 128, 33, 0.30);
+}
+
+/* ******* user opinion ********* */
+.user-opinion {
+    position: relative;
+    width: 100%;
+    min-height: 900px;
+    overflow: hidden;
+    background: url("../../assets/images/background2.png") no-repeat;
+    background-size: cover;
+    background-position: right center;
+}
+
+.user-opinion::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        linear-gradient(180deg,
+            rgba(32, 17, 61, 0.85) 0%,
+            rgba(32, 17, 61, 0.55) 25%,
+            rgba(32, 17, 61, 0.25) 55%,
+            rgba(32, 17, 61, 0.05) 75%,
+            rgba(32, 17, 61, 0.0) 100%),
+
+        linear-gradient(90deg,
+            rgba(32, 17, 61, 0.45) 0%,
+            rgba(32, 17, 61, 0.15) 35%,
+            rgba(32, 17, 61, 0.0) 60%);
+}
+
+.user-opinion-container {
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.opinion-top-section {
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    gap: 80px;
+    padding-top: 120px;
+    align-items: start;
+}
+
+.opinion-top-section-left h3 {
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 54px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.opinion-top-section-left p {
+    margin: 0;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 420px;
+}
+
+.user-opinion-msgs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 32px;
+    align-items: stretch;
+    box-shadow: none;
+}
+
+.user-opinion-msg {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+
+    padding: 26px 28px 24px;
+    box-sizing: border-box;
+
+    min-height: 190px;
+    height: 100%;
+}
+
+.user-opinion-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.user-opinion-wrap h3,
+.user-opinion-wrap h4,
+.user-opinion-wrap p,
+.user-opinion-wrap span {
+    margin: 0;
+}
+
+.user-opinion-wrap h3 {
+    color: #00A092;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: -10px;
+}
+
+.user-opinion-wrap h4 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.user-opinion-wrap p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    color: #000;
+    margin-bottom: 2.5rem;
+}
+
+.user-opinion-wrap span {
+    position: absolute;
+    bottom: 0;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.user-opinion-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 3rem;
+}
+
+.user-opinion-btns {
+    background-color: transparent;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+.user-opinion-btns svg path {
+    fill: #fff !important;
+}
+
+.user-opinion-btns:hover {
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+
+.user-opinion-btns:hover svg path {
+    fill: #20113D !important;
+}
+
+.opinine-leave-feadback-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15rem;
+    gap: 1rem;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    padding: 18px 50px;
+    cursor: pointer;
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.opinine-leave-feadback-btn svg path {
+    fill: #fff !important;
+}
+
+.opinine-leave-feadback-btn:hover {
+    background: #00A092;
+}
 
 /* ******** POPUP  ******** */
 .popup-overlay {
