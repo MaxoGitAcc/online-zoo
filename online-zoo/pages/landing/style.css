@@ -261,6 +261,203 @@ body {
     background-color: #D26004;
 }
 
+
+
+/* ******** meet-pets  ********* */
+.meet-pets-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.meet-pets-container h2 {
+    color: #00A092;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.meet-pets-container p {
+    text-align: center;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+
+    max-width: 920px;
+}
+
+.pets-list-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.pets-list-btns button {
+    background-color: transparent;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 18px 25px;
+    cursor: pointer;
+    color: black;
+    margin-top: 4rem;
+}
+
+.pets-list-btns button svg path {
+    fill: currentColor;
+    transition: fill 0.2s ease;
+}
+
+.pets-list-btns button:hover {
+    background-color: #20113D;
+    border: 1px solid #20113D;
+    color: #fff;
+}
+
+.meet-pets {
+    width: 100%;
+}
+
+.meet-pets-container {
+    max-width: 1480px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.animal-cards-viewport {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    margin-top: 2rem;
+}
+
+.animal-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+    width: max-content;
+    grid-auto-flow: row;
+}
+
+.animal-card {
+    background: #20113d;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 420px;
+    height: 720px;
+}
+
+.animal-card-img-wrap {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    position: relative;
+}
+
+.animal-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.animal-card-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background-color: #20113D;
+    padding: 12px 19px;
+    border-radius: 5px 0;
+
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.animal-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.animal-card-content h3 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    color: #FFF;
+    text-align: center;
+}
+
+.animal-card-content p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    color: #FFF;
+    text-align: center;
+    width: 80%;
+}
+
+.animal-card-link {
+    display: flex;
+    color: #F58021;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    text-decoration: none;
+}
+
+.choose-favorite-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 3px solid;
+    background-color: transparent;
+    padding: 20px 40px;
+    border-radius: 5px;
+    margin-top: 3rem;
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.choose-favorite-btn:hover {
+    color: #FFF;
+    background: #20113D;
+}
+
+.choose-favorite-btn:hover svg path {
+    fill: #fff;
+}
+
+
 /* ******** POPUP  ******** */
 .popup-overlay {
     position: fixed;

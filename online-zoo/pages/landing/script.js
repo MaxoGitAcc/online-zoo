@@ -15,6 +15,144 @@ document.querySelector(".btnToLiveCam").addEventListener("click", () => {
 });
 
 
+// ******** MEET PETS ********* //
+function renderMeetPets() {
+  const grid = document.querySelector(".animal-cards");
+  if (!grid) return;
+
+  const animals = [
+    {
+      name: "Lucas",
+      title: "Giant Panda",
+      desc: "Native to central China, giant pandas have come to symbolize vulnerable species.",
+      img: "../../assets/images/animaCards/panda.png",
+      camLink: "#",
+    },
+    {
+      name: "Andy",
+      title: "Madagascarian Lemur",
+      desc: "Lemurs are considered the world's most endangered group of mammals.",
+      img: "../../assets/images/animaCards/lemur.png",
+      camLink: "#",
+    },
+    {
+      name: "Glen",
+      title: "Gorilla in Congo",
+      desc: "Variety of snacks very important for the healthy life of gorillas and plenty of babies.",
+      img: "../../assets/images/animaCards/gorila.png",
+      camLink: "#",
+    },
+    {
+      name: "Mike",
+      title: "Chinese Alligator",
+      desc: "From nose to tail, belly to back, hard scales protect this petite alligator.",
+      img: "../../assets/images/animaCards/aligator.png",
+      camLink: "#",
+    },
+    {
+      name: "Sam & Lora",
+      title: "West End Bald Eagles",
+      desc: "Pair of eagle parents lay and protect eggs, feed the chicks and teach them to hunt and fly.",
+      img: "../../assets/images/animaCards/eagle.png",
+      camLink: "#",
+    },
+    {
+      name: "Liz",
+      title: "Australian Koala",
+      desc: "The elevated walkways bring you to eye level with the koalas as they perch in their forest.",
+      img: "../../assets/images/animaCards/koala.png",
+      camLink: "#",
+    },
+    {
+      name: "Shake",
+      title: "African Lion",
+      desc: "Lions roam the savannas and grasslands of Africa, hunting and raising cubs in the pride.",
+      img: "../../assets/images/animaCards/lion.png",
+      camLink: "#",
+    },
+    {
+      name: "Senja",
+      title: "Sumatran Tiger",
+      desc: "Sumatran Tigers are the smallest of the five sub-species, and are found in Indonesia.",
+      img: "../../assets/images/animaCards/tiger.png",
+      camLink: "#",
+    },
+  ];
+
+  grid.innerHTML = "";
+
+  animals.forEach((animal) => {
+    const card = document.createElement("article");
+    card.className = "animal-card";
+
+    card.innerHTML = `
+      <div class="animal-card-img-wrap">
+        <img src="${animal.img}" alt="${animal.title}" />
+        <span class="animal-card-name">${animal.name}</span>
+      </div>
+
+      <div class="animal-card-content">
+        <h3>${animal.title}</h3>
+        <p>${animal.desc}</p>
+        <a href="${animal.camLink}" class="animal-card-link">
+          VIEW LIVE CAM <span>→</span>
+        </a>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderMeetPets();
+});
+
+function setupMeetPetsButtons() {
+  const viewport = document.querySelector(".animal-cards-viewport");
+  const grid = document.querySelector(".animal-cards");
+  const left = document.querySelector(".listBtnLeft");
+  const right = document.querySelector(".listBtnRight");
+  if (!viewport || !grid || !left || !right) return;
+
+  function getPageWidth() {
+    const card = grid.querySelector(".animal-card");
+    if (!card) return 0;
+
+    const cardW = card.getBoundingClientRect().width;
+    const styles = getComputedStyle(grid);
+    const gap = parseFloat(styles.gap) || 30;
+
+    return (cardW * 4) + (gap * 3);
+  }
+
+  function updateDisabled() {
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+
+    left.disabled = viewport.scrollLeft <= 0;
+    right.disabled = viewport.scrollLeft >= maxScroll - 1;
+  }
+
+  left.addEventListener("click", () => {
+    viewport.scrollBy({ left: -getPageWidth(), behavior: "smooth" });
+    setTimeout(updateDisabled, 400);
+  });
+
+  right.addEventListener("click", () => {
+    viewport.scrollBy({ left: getPageWidth(), behavior: "smooth" });
+    setTimeout(updateDisabled, 400);
+  });
+
+  viewport.addEventListener("scroll", updateDisabled);
+  window.addEventListener("resize", updateDisabled);
+
+  updateDisabled();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderMeetPets();
+  setupMeetPetsButtons();
+});
 
 
 // ******** POPUP ********* //
