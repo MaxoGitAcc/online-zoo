@@ -4,8 +4,11 @@ fetch("../../assets/components/header.html")
     document.getElementById("header-root").innerHTML = html;
 
     const page = document.body.dataset.page;
-    document.querySelectorAll(".nav a").forEach(a => {
-      if (a.dataset.page === page) a.classList.add("active");
+    document.querySelectorAll(".nav-item").forEach(li => {
+      const link = li.querySelector("a");
+      if (link.dataset.page === page) {
+        li.classList.add("active");
+      }
     });
   })
   .catch(err => console.error("Header load failed:", err));

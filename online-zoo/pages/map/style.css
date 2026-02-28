@@ -1,0 +1,167 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+.map-page {
+    flex: 1;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.map-container {
+    width: 75%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.title h2 {
+    color: #20113D;
+    text-align: center;
+
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+
+    max-width: 601px;
+    margin: 0;
+}
+
+.map {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-img {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: block;
+}
+
+.pin {
+    position: absolute;
+    width: 81px;
+    height: 121px;
+    transform: translate(-50%, -100%);
+    cursor: pointer;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.pin:hover {
+    transform: translate(-50%, -108%);
+}
+
+.pin-tag {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: filter 0.25s ease;
+}
+
+.pin-shape {
+    fill: #F58021;
+    stroke: transparent;
+    stroke-width: 0;
+    transition: fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.pin:hover .pin-shape {
+    fill: #ffffff;
+    stroke: #20113D;
+    stroke-width: 2;
+}
+
+.pin:hover .pin-tag {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+
+.pin-animal {
+    position: absolute;
+    left: 50%;
+    top: 43%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    z-index: 2;
+    transition: transform 0.25s ease;
+}
+
+.pin-animal path {
+    fill: #20113D;
+    transition: fill 0.25s ease;
+}
+
+.pin:hover .pin-animal {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.pin-alligator {
+    top: 58%;
+    left: 24%;
+}
+
+.pin-eagle {
+    top: 58%;
+    left: 15%;
+}
+
+.pin-lion {
+    top: 64%;
+    left: 44%;
+}
+
+.pin-gorila {
+    top: 66%;
+    left: 53%;
+}
+
+.pin-lemur {
+    top: 80%;
+    left: 60%;
+}
+
+.pin-panda {
+    top: 52%;
+    left: 72%;
+}
+
+.pin-coala {
+    top: 83%;
+    left: 84%;
+}
+
+.pin-tiger {
+    top: 69.5%;
+    left: 75.5%;
+}
