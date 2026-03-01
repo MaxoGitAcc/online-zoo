@@ -97,16 +97,18 @@ function renderMeetPets() {
 
     card.innerHTML = `
       <div class="animal-card-img-wrap">
-        <img src="${animal.img}" alt="${animal.title}" />
-        <span class="animal-card-name">${animal.name}</span>
-      </div>
+          <a class="zoolink" href="../zoos/index.html?animal=panda">
+            <img src="${animal.img}" alt="${animal.title}" />
+            <span class="animal-card-name">${animal.name}</span>
+          </a>
+        </div>
 
-      <div class="animal-card-content">
-        <h3>${animal.title}</h3>
-        <p>${animal.desc}</p>
-        <a href="${animal.camLink}" class="animal-card-link">
-          VIEW LIVE CAM <span>→</span>
-        </a>
+        <div class="animal-card-content">
+          <h3>${animal.title}</h3>
+          <p>${animal.desc}</p>
+          <a href="${animal.camLink}" class="animal-card-link">
+            VIEW LIVE CAM <span>→</span>
+          </a>
       </div>
     `;
 

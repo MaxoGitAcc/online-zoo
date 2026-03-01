@@ -368,6 +368,7 @@ body {
     overflow: hidden;
     position: relative;
     padding-bottom: 2rem;
+    cursor: pointer;
 }
 
 .animal-card-img-wrap img {
