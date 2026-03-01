@@ -13,7 +13,9 @@ body {
 }
 
 :root {
-    --side-nav-w: 220px;
+    --side-nav-collapsed: 220px;
+    --side-nav-open: 340px;
+    /* --side-nav-w: 220px; */
 }
 
 .zoo-page,
@@ -40,20 +42,28 @@ body {
     margin: 0;
     background-color: #20113D;
     color: #fff;
-    width: var(--side-nav-w);
+
+    width: var(--side-nav-collapsed);
     flex-shrink: 0;
     position: relative;
-    top: 0;
 
     max-height: 100vh;
     overflow-y: auto;
-    flex-shrink: 0;
+    overflow-x: hidden;
+
+    transition: width 0.25s ease;
+}
+
+/* open state */
+.side-nav.is-open {
+    width: var(--side-nav-open);
 }
 
 .go-live {
     position: absolute;
     top: 0;
     left: 0;
+
     border-radius: 0 0 5px 0;
     background: #F58021;
     padding: 6px 20px;
@@ -63,7 +73,13 @@ body {
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
+
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    z-index: 50;
 }
 
 .arrow {
@@ -72,42 +88,105 @@ body {
     align-items: center;
     justify-content: end;
     padding: 22px 5px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    z-index: 40;
 }
 
-.arrow-down {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0px;
+.arrow svg {
+    display: block;
+}
+
+.side-nav hr {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0;
 }
 
 .selected-card {
     display: flex;
     align-items: center;
     justify-content: center;
+
     position: relative;
-    padding: 15px 0px;
+    padding: 15px 0;
+
+    cursor: pointer;
+    user-select: none;
 }
 
-.card-animal {
-    position: absolute;
-    cursor: pointer;
+.selected-card:active {
+    transform: scale(0.98);
 }
 
-.card-bg {
-    cursor: pointer;
+.selected-card .card-bg circle {
+    fill: #F58021;
+    transition: fill 0.2s ease;
 }
 
 .selected-card.is-active .card-bg circle {
     fill: #fff !important;
 }
 
+.card-bg {
+    cursor: pointer;
+    display: block;
+    flex: 0 0 auto;
+}
+
+.card-animal {
+    position: absolute;
+    cursor: pointer;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-text {
+    display: none;
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    max-width: 220px;
+}
+
+.side-nav.is-open .selected-card {
+    justify-content: flex-start;
+    padding: 22px 32px;
+    padding-left: 120px;
+    gap: 28px;
+}
+
+.side-nav.is-open .card-text {
+    display: block;
+}
+
+.side-nav.is-open .card-bg {
+    display: none;
+}
+
+.side-nav.is-open .card-animal {
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.side-nav.is-open .card-animal path {
+    fill: #fff !important;
+}
+
 .arrow-down {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
     cursor: pointer;
 }
 
-
-/* ************ PAGE  ************ */
 .zoo-content {
     flex: 1;
     min-width: 0;
@@ -119,11 +198,12 @@ body {
     margin: 0 auto;
 }
 
-.zoo-content>.bamboo {
-    width: calc(100% + var(--side-nav-w));
-    margin-left: calc(-1 * var(--side-nav-w));
+.zoo-content > .bamboo {
+    width: 110vw;
+    margin-left: calc(50% - 60vw);
     margin-right: 0;
     background: #20113D;
+    margin-top: 10rem;
 }
 
 .zoo-top {
@@ -206,8 +286,7 @@ body {
 }
 
 .more-live {
-    margin-top: 32px;
-    padding-bottom: 30px;
+    margin-top: 5rem;
 }
 
 .more-live h3 {
@@ -219,6 +298,7 @@ body {
     font-weight: 500;
     line-height: normal;
     text-transform: uppercase;
+    margin-top: 5rem;
 }
 
 .more-live-row {
@@ -283,7 +363,6 @@ body {
     border: 2px solid transparent;
 
     box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
-    margin-bottom: 10rem;
 }
 
 .thumb-video iframe {
@@ -303,16 +382,17 @@ body {
     width: 100vw;
     margin-left: calc(50% - 50vw);
     background: #20113D;
+    margin-top: 10rem;
 }
 
 .bamboo-inner {
-    width: 75%;
+    width: 80%;
     margin: 0 auto;
     padding: 30px 0 30px;
 
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 15rem;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 10rem;
     align-items: start;
 }
 
@@ -400,7 +480,8 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    max-width: 1040px;;
+    max-width: 1040px;
+    ;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     padding: 10px 0px;
