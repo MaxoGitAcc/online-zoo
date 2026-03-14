@@ -55,8 +55,12 @@ async function fetchAndRenderPets(): Promise<void> {
   loader.hidden = false;
 
 try {
-    const pets = await getPets();
-    console.log(pets[0]);
+    let pets;
+    try {
+      pets = await getPets();
+    } catch {
+      pets = await getPets();
+    }
 
     loader.hidden = true;
 
@@ -81,6 +85,8 @@ try {
 
       grid.appendChild(card);
     });
+
+    setupMeetPetsButtons();
   } catch (error) {
     console.log(error);
     loader.hidden = true;
@@ -90,7 +96,6 @@ try {
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchAndRenderPets();
-  setupMeetPetsButtons();
 });
 
 
