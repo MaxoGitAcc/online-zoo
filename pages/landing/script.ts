@@ -1,4 +1,4 @@
-fetch("../../assets/components/header.html")
+fetch("/assets/components/header.html")
   .then((res) => res.text())
   .then((html) => {
     const heeaderRoot = document.getElementById("header-root");
@@ -23,7 +23,7 @@ if (liveCamBtn) {
   });
 }
 
-fetch("../../assets/components/footer.html")
+fetch("/assets/components/footer.html")
   .then((res) => res.text())
   .then((html) => {
     const footerRoot = document.getElementById("footer-root");

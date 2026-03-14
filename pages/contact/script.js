@@ -1,4 +1,4 @@
-fetch("../../assets/components/header.html")
+fetch("/assets/components/header.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("header-root").innerHTML = html;
@@ -18,7 +18,7 @@ fetch("../../assets/components/header.html")
   })
   .catch(err => console.error("Header load failed:", err));
 
-fetch("../../assets/components/footer.html")
+fetch("/assets/components/footer.html")
   .then(res => res.text())
   .then(html => {
     document.getElementById("footer-root").innerHTML = html;
