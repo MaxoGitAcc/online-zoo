@@ -1,29 +1,36 @@
 fetch("../../assets/components/header.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("header-root").innerHTML = html;
+  .then((res) => res.text())
+  .then((html) => {
+    const heeaderRoot = document.getElementById("header-root");
+    if (!heeaderRoot) return;
+    heeaderRoot.innerHTML = html;
 
     const page = document.body.dataset.page;
-    document.querySelectorAll(".nav-item").forEach(li => {
+    document.querySelectorAll(".nav-item").forEach((li) => {
       const link = li.querySelector("a");
+      if (!link) return;
       if (link.dataset.page === page) {
         li.classList.add("active");
       }
     });
   })
-  .catch(err => console.error("Header load failed:", err));
+  .catch((err) => console.error("Header load failed:", err));
 
-document.querySelector(".btnToLiveCam").addEventListener("click", () => {
-  window.location.href = "../map/index.html";
-});
+const liveCamBtn = document.querySelector(".btnToLiveCam");
+if (liveCamBtn) {
+  liveCamBtn.addEventListener("click", () => {
+    window.location.href = "../map/index.html";
+  });
+}
 
 fetch("../../assets/components/footer.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("footer-root").innerHTML = html;
+  .then((res) => res.text())
+  .then((html) => {
+    const footerRoot = document.getElementById("footer-root");
+    if (!footerRoot) return;
+    footerRoot.innerHTML = html;
   })
-.catch(err => console.error("Footer load failed:", err));
-
+  .catch((err) => console.error("Footer load failed:", err));
 
 // ******** MEET PETS ********* //
 function renderMeetPets() {
@@ -121,28 +128,30 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function setupMeetPetsButtons() {
-  const viewport = document.querySelector(".animal-cards-viewport");
-  const grid = document.querySelector(".animal-cards");
-  const left = document.querySelector(".listBtnLeft");
-  const right = document.querySelector(".listBtnRight");
+  const viewport = document.querySelector<HTMLElement>(
+    ".animal-cards-viewport",
+  );
+  const grid = document.querySelector<HTMLElement>(".animal-cards");
+  const left = document.querySelector<HTMLButtonElement>(".listBtnLeft");
+  const right = document.querySelector<HTMLButtonElement>(".listBtnRight");
   if (!viewport || !grid || !left || !right) return;
 
   function getPageWidth() {
-    const card = grid.querySelector(".animal-card");
+    const card = grid!.querySelector(".animal-card");
     if (!card) return 0;
 
     const cardW = card.getBoundingClientRect().width;
-    const styles = getComputedStyle(grid);
+    const styles = getComputedStyle(grid!);
     const gap = parseFloat(styles.gap) || 30;
 
-    return (cardW * 4) + (gap * 3);
+    return cardW * 4 + gap * 3;
   }
 
   function updateDisabled() {
-    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    const maxScroll = viewport!.scrollWidth - viewport!.clientWidth;
 
-    left.disabled = viewport.scrollLeft <= 0;
-    right.disabled = viewport.scrollLeft >= maxScroll - 1;
+    left!.disabled = viewport!.scrollLeft <= 0;
+    right!.disabled = viewport!.scrollLeft >= maxScroll - 1;
   }
 
   left.addEventListener("click", () => {
@@ -169,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ******** user opinion ********* //
 function renderUserOpnionCards() {
   const card = document.querySelector(".user-opinion-msgs");
-  if(!card) return;
+  if (!card) return;
 
   const msgs = [
     {
@@ -179,14 +188,14 @@ function renderUserOpnionCards() {
             children were very impressed by the
             opportunity to explore  the  life of incredible
             animals in  real-time.`,
-      date: "New Jersey, June 2020"
+      date: "New Jersey, June 2020",
     },
     {
       name: "Carol Larsen",
       msg: `We so enjoy the ever-evolving selection of animals from around the globe.
             THANK YOU for sharing these fascinating animal friends with us so
             that we may learn and increase our understanding of the animal kingdom.`,
-      date: "Toronto, November 2020"
+      date: "Toronto, November 2020",
     },
     {
       name: "C. Stockman",
@@ -194,7 +203,7 @@ function renderUserOpnionCards() {
             If anyone is looking for an attraction that educates people
             on wild animals - it's for you! I highly recommend seeing
             for yourself the variety of animals on your screen.`,
-      date: "London, February 2020"
+      date: "London, February 2020",
     },
     {
       name: "Tomas Ray",
@@ -202,9 +211,9 @@ function renderUserOpnionCards() {
             cameras to let each of us see things that we would probably
             never see on our own. There are so many positives on Zoo
             Online and I'm grateful for it. Thank you so much!`,
-      date: "Amsterdam, June 2020"
-    }
-  ]
+      date: "Amsterdam, June 2020",
+    },
+  ];
 
   card.innerHTML = "";
 
@@ -222,7 +231,7 @@ function renderUserOpnionCards() {
     `;
 
     card.appendChild(msgEl);
-  })
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -231,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ******** POPUP ********* //
 function openWelcomePopup() {
-  const tpl = document.getElementById("welcome-popup");
+  const tpl = document.getElementById("welcome-popup") as HTMLTemplateElement;
   if (!tpl) {
     console.error("welcome-popup template not found");
     return;
@@ -242,9 +251,12 @@ function openWelcomePopup() {
 
   document.body.appendChild(tpl.content.cloneNode(true));
 
-  const overlay = document.querySelector("[data-popup-overlay]");
-  const closeBtn = document.querySelector("[data-popup-close]");
-  const amountBtns = document.querySelectorAll(".popup1-btns button");
+  const overlay = document.querySelector<HTMLElement>("[data-popup-overlay]");
+  const closeBtn = document.querySelector<HTMLElement>("[data-popup-close]");
+  if (!overlay || !closeBtn) return;
+  const amountBtns = document.querySelectorAll<HTMLButtonElement>(
+    ".popup1-btns button",
+  );
 
   const closePopup = () => overlay.remove();
 
@@ -279,9 +291,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Donation popup
 const donateBtn = document.querySelector(".donate-btn");
-const template = document.getElementById("donation-popup-template");
+const template = document.getElementById(
+  "donation-popup-template",
+) as HTMLTemplateElement;
 
-let popupInstance = null;
+let popupInstance: HTMLElement | null = null;
 
 function closePopup() {
   if (!popupInstance) return;
@@ -289,57 +303,68 @@ function closePopup() {
   popupInstance = null;
 }
 
-donateBtn.addEventListener("click", () => {
-  if (popupInstance) return;
+if (donateBtn && template) {
+  donateBtn.addEventListener("click", () => {
+    if (popupInstance) return;
 
-  const clone = template.content.cloneNode(true);
-  document.body.appendChild(clone);
+    const clone = template.content.cloneNode(true);
+    document.body.appendChild(clone);
 
-  popupInstance = document.querySelector(".popup-overlay");
+    popupInstance = document.querySelector(".popup-overlay");
 
-  const closeBtn = popupInstance.querySelector(".popup-close");
-  closeBtn.addEventListener("click", closePopup);
+    const closeBtn =
+      popupInstance!.querySelector<HTMLButtonElement>(".popup-close");
+    closeBtn!.addEventListener("click", closePopup);
 
-  popupInstance.addEventListener("click", (e) => {
-    if (e.target.classList.contains("popup-overlay")) closePopup();
+    popupInstance!.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (target.classList.contains("popup-overlay")) closePopup();
+    });
+
+    document.addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === "Escape") closePopup();
+      },
+      { once: true },
+    );
+
+    const steps = popupInstance!.querySelectorAll(".popupStep");
+    const dots = popupInstance!.querySelectorAll(".dot");
+    const nextBtn =
+      popupInstance!.querySelector<HTMLButtonElement>(".popupNextBtn");
+    const nextText =
+      popupInstance!.querySelector<HTMLButtonElement>(".popupNextText");
+    const backBtn = popupInstance!.querySelector<HTMLElement>(".popupBackBtn");
+    if (!closeBtn || !nextBtn || !nextText || !backBtn) return;
+
+    let currentStep = 1;
+
+    function showStep(stepNumber: number) {
+      steps.forEach((s) => s.classList.remove("is-active"));
+      dots.forEach((d) => d.classList.remove("is-active"));
+
+      popupInstance!
+        .querySelector(`.popupStep[data-step="${stepNumber}"]`)
+        ?.classList.add("is-active");
+      popupInstance!
+        .querySelector(`.dot[data-dot="${stepNumber}"]`)
+        ?.classList.add("is-active");
+
+      currentStep = stepNumber;
+
+      backBtn!.hidden = currentStep === 1;
+
+      nextText!.textContent = currentStep === 3 ? "Finish" : "Next";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentStep < 3) showStep(currentStep + 1);
+      else closePopup();
+    });
+
+    backBtn.addEventListener("click", () => {
+      if (currentStep > 1) showStep(currentStep - 1);
+    });
   });
-
-  document.addEventListener(
-    "keydown",
-    (e) => {
-      if (e.key === "Escape") closePopup();
-    },
-    { once: true }
-  );
-
-  const steps = popupInstance.querySelectorAll(".popupStep");
-  const dots = popupInstance.querySelectorAll(".dot");
-  const nextBtn = popupInstance.querySelector(".popupNextBtn");
-  const nextText = popupInstance.querySelector(".popupNextText");
-  const backBtn = popupInstance.querySelector(".popupBackBtn");
-
-  let currentStep = 1;
-
-  function showStep(stepNumber) {
-    steps.forEach(s => s.classList.remove("is-active"));
-    dots.forEach(d => d.classList.remove("is-active"));
-
-    popupInstance.querySelector(`.popupStep[data-step="${stepNumber}"]`)?.classList.add("is-active");
-    popupInstance.querySelector(`.dot[data-dot="${stepNumber}"]`)?.classList.add("is-active");
-
-    currentStep = stepNumber;
-
-    backBtn.hidden = currentStep === 1;
-
-    nextText.textContent = currentStep === 3 ? "Finish" : "Next";
-  }
-
-  nextBtn.addEventListener("click", () => {
-    if (currentStep < 3) showStep(currentStep + 1);
-    else closePopup();
-  });
-
-  backBtn.addEventListener("click", () => {
-    if (currentStep > 1) showStep(currentStep - 1);
-  });
-});
+}
