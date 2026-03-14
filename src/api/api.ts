@@ -8,6 +8,7 @@ import type {
   Camera,
   DonationRequest,
   DonationResponse,
+  PetsResponse,
 } from "../types/types";
 
 const BASE_URL = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod";
@@ -19,13 +20,14 @@ async function request<T>(
 ): Promise<T> {
   const token = localStorage.getItem("token");
 
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-    ...(options.headers as Record<string, string>),
-  };
+  const headers: Record<string, string> = {};
 
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  if (options.method === "POST") {
+    headers["Content-Type"] = "application/json";
   }
 
   const response = await fetch(`${BASE_URL}${endpoint}`, {
@@ -43,7 +45,8 @@ async function request<T>(
 
 // ****  Pets**** //****
 export async function getPets(): Promise<Pet[]> {
-  return request<Pet[]>("/pets");
+  const response = await request<PetsResponse>("/pets");
+  return response.data;
 }
 
 export async function getPetById(id: number): Promise<Pet> {
@@ -52,7 +55,8 @@ export async function getPetById(id: number): Promise<Pet> {
 
 // ****  Feedback **** //
 export async function getFeedback(): Promise<Feedback[]> {
-  return request<Feedback[]>("/feedback");
+  const response = await request<{data: Feedback[]}>("/feedback");
+  return response.data;
 }
 
 // ****  Cameras **** //

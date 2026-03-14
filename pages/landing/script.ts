@@ -33,99 +33,66 @@ fetch("../../assets/components/footer.html")
   .catch((err) => console.error("Footer load failed:", err));
 
 // ******** MEET PETS ********* //
-function renderMeetPets() {
-  const grid = document.querySelector(".animal-cards");
-  if (!grid) return;
+import { getPets } from "../../src/api/api";
 
-  const animals = [
-    {
-      name: "Lucas",
-      title: "Giant Panda",
-      desc: "Native to central China, giant pandas have come to symbolize vulnerable species.",
-      img: "../../assets/images/animaCards/panda.png",
-      camLink: "#",
-    },
-    {
-      name: "Andy",
-      title: "Madagascarian Lemur",
-      desc: "Lemurs are considered the world's most endangered group of mammals.",
-      img: "../../assets/images/animaCards/lemur.png",
-      camLink: "#",
-    },
-    {
-      name: "Glen",
-      title: "Gorilla in Congo",
-      desc: "Variety of snacks very important for the healthy life of gorillas and plenty of babies.",
-      img: "../../assets/images/animaCards/gorila.png",
-      camLink: "#",
-    },
-    {
-      name: "Mike",
-      title: "Chinese Alligator",
-      desc: "From nose to tail, belly to back, hard scales protect this petite alligator.",
-      img: "../../assets/images/animaCards/aligator.png",
-      camLink: "#",
-    },
-    {
-      name: "Sam & Lora",
-      title: "West End Bald Eagles",
-      desc: "Pair of eagle parents lay and protect eggs, feed the chicks and teach them to hunt and fly.",
-      img: "../../assets/images/animaCards/eagle.png",
-      camLink: "#",
-    },
-    {
-      name: "Liz",
-      title: "Australian Koala",
-      desc: "The elevated walkways bring you to eye level with the koalas as they perch in their forest.",
-      img: "../../assets/images/animaCards/koala.png",
-      camLink: "#",
-    },
-    {
-      name: "Shake",
-      title: "African Lion",
-      desc: "Lions roam the savannas and grasslands of Africa, hunting and raising cubs in the pride.",
-      img: "../../assets/images/animaCards/lion.png",
-      camLink: "#",
-    },
-    {
-      name: "Senja",
-      title: "Sumatran Tiger",
-      desc: "Sumatran Tigers are the smallest of the five sub-species, and are found in Indonesia.",
-      img: "../../assets/images/animaCards/tiger.png",
-      camLink: "#",
-    },
-  ];
+const petImages: Record<string, string> = {
+  "Lucas": "../../assets/images/animaCards/panda.png",
+  "Andy": "../../assets/images/animaCards/lemur.png",
+  "Glen": "../../assets/images/animaCards/gorila.png",
+  "Mike": "../../assets/images/animaCards/aligator.png",
+  "Sam & Lora": "../../assets/images/animaCards/eagle.png",
+  "Liz": "../../assets/images/animaCards/koala.png",
+  "Shake": "../../assets/images/animaCards/lion.png",
+  "Senja": "../../assets/images/animaCards/tiger.png",
+};
 
-  grid.innerHTML = "";
+async function fetchAndRenderPets(): Promise<void> {
+  const loader = document.getElementById("petsLoader");
+  const errorEl = document.getElementById("petsError");
+  const grid = document.querySelector<HTMLElement>(".animal-cards");
+  if (!loader || !errorEl || !grid) return;
 
-  animals.forEach((animal) => {
-    const card = document.createElement("article");
-    card.className = "animal-card";
+  loader.hidden = false;
 
-    card.innerHTML = `
-      <div class="animal-card-img-wrap">
-          <a class="zoolink" href="../zoos/index.html?animal=panda">
-            <img src="${animal.img}" alt="${animal.title}" />
-            <span class="animal-card-name">${animal.name}</span>
+try {
+    const pets = await getPets();
+    console.log(pets[0]);
+
+    loader.hidden = true;
+
+    pets.forEach((pet) => {
+      const card = document.createElement("article");
+      const img = petImages[pet.name] ?? "../../assets/images/animaCards/panda.png";
+      card.className = "animal-card";
+
+      card.innerHTML = `
+        <div class="animal-card-img-wrap">
+          <a class="zoolink" href="../zoos/index.html?id=${pet.id}">
+            <img src="${img}" alt="${pet.name}" />
+            <span class="animal-card-name">${pet.name}</span>
           </a>
         </div>
-
         <div class="animal-card-content">
-          <h3>${animal.title}</h3>
-          <p>${animal.desc}</p>
-          <a href="${animal.camLink}" class="animal-card-link">
-            VIEW LIVE CAM <span>→</span>
-          </a>
-      </div>
-    `;
+          <h3>${pet.name}</h3>
+          <p>${pet.description}</p>
+          <a href="#" class="animal-card-link">VIEW LIVE CAM <span>→</span></a>
+        </div>
+      `;
 
-    grid.appendChild(card);
-  });
+      grid.appendChild(card);
+    });
+  } catch (error) {
+    console.log(error);
+    loader.hidden = true;
+    errorEl.hidden = false;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderMeetPets();
+  fetchAndRenderPets();
+  setupMeetPetsButtons();
 });
+
 
 function setupMeetPetsButtons() {
   const viewport = document.querySelector<HTMLElement>(
@@ -171,72 +138,68 @@ function setupMeetPetsButtons() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderMeetPets();
   setupMeetPetsButtons();
 });
 
 // ******** user opinion ********* //
-function renderUserOpnionCards() {
-  const card = document.querySelector(".user-opinion-msgs");
-  if (!card) return;
+import { getFeedback } from "../../src/api/api";
 
-  const msgs = [
-    {
-      name: "Karen Maithlan",
-      msg: `I am writing to thank you for your mission is
-            to bring people closer to nature! Like myself,
-            children were very impressed by the
-            opportunity to explore  the  life of incredible
-            animals in  real-time.`,
-      date: "New Jersey, June 2020",
-    },
-    {
-      name: "Carol Larsen",
-      msg: `We so enjoy the ever-evolving selection of animals from around the globe.
-            THANK YOU for sharing these fascinating animal friends with us so
-            that we may learn and increase our understanding of the animal kingdom.`,
-      date: "Toronto, November 2020",
-    },
-    {
-      name: "C. Stockman",
-      msg: `A fantastic experience for kids and adults alike!
-            If anyone is looking for an attraction that educates people
-            on wild animals - it's for you! I highly recommend seeing
-            for yourself the variety of animals on your screen.`,
-      date: "London, February 2020",
-    },
-    {
-      name: "Tomas Ray",
-      msg: `I want to thank you for the amazing sites you find to put your
-            cameras to let each of us see things that we would probably
-            never see on our own. There are so many positives on Zoo
-            Online and I'm grateful for it. Thank you so much!`,
-      date: "Amsterdam, June 2020",
-    },
-  ];
+async function fetchAndRenderFeedback(): Promise<void> {
+ const loader = document.getElementById("feedbackLoader");
+  const errorEl = document.getElementById("feedbackError");
+  const container = document.querySelector<HTMLElement>(".user-opinion-msgs");
+  if (!loader || !errorEl || !container) return;
 
-  card.innerHTML = "";
+  loader.hidden = false;
 
-  msgs.forEach((i) => {
-    const msgEl = document.createElement("article");
-    msgEl.className = "user-opinion-msg";
+  try {
+    const feedback = await getFeedback();
+    loader.hidden = true;
 
-    msgEl.innerHTML = `
-      <div class="user-opinion-wrap">
-        <h3>“</h3>
-        <h4>${i.date}</h4>
-        <p>${i.msg}</p>
-        <span>${i.name}</span>
-      </div>
-    `;
+    feedback.forEach((i) => {
+      const msgEl = document.createElement("article");
+      msgEl.className = "user-opinion-msg";
 
-    card.appendChild(msgEl);
-  });
+      msgEl.innerHTML = `
+        <div class="user-opinion-wrap">
+          <h3>"</h3>
+          <p>${i.text}</p>
+          <span>${i.name}</span>
+        </div>
+      `;
+
+      container.appendChild(msgEl);
+      setupFeedbackButtons();
+    });
+  } catch (error) {
+    loader.hidden = true;
+    errorEl.hidden = false;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderUserOpnionCards();
+  fetchAndRenderPets();
+  fetchAndRenderFeedback();
 });
+
+function setupFeedbackButtons(): void {
+  const msgs = document.querySelector<HTMLElement>(".user-opinion-msgs");
+  const btns = document.querySelectorAll<HTMLButtonElement>(".user-opinion-btns");
+  if (!msgs || btns.length < 2) return;
+
+  let currentPage = 0;
+  const pageWidth = 1230 + 30;
+
+  btns[0].addEventListener("click", () => {
+    if (currentPage > 0) currentPage--;
+    msgs.style.transform = `translateX(-${currentPage * pageWidth}px)`;
+  });
+
+  btns[1].addEventListener("click", () => {
+    currentPage++;
+    msgs.style.transform = `translateX(-${currentPage * pageWidth}px)`;
+  });
+}
 
 // ******** POPUP ********* //
 function openWelcomePopup() {

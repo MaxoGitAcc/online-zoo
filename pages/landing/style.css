@@ -11,6 +11,18 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+.loader {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.error-msg {
+    text-align: center;
+    padding: 20px;
+    color: red;
+}
+
 /* ******** HERO SECTION  ******** */
 .hero-section {
     max-width: 73%;
@@ -342,12 +354,10 @@ body {
 }
 
 .animal-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-direction: row;
     gap: 30px;
-
     width: max-content;
-    grid-auto-flow: row;
 }
 
 .animal-card {
@@ -636,10 +646,11 @@ body {
 
 .user-opinion-msgs {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px 32px;
-    align-items: stretch;
-    box-shadow: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    gap: 30px;
+    width: max-content;
 }
 
 .user-opinion-msg {
@@ -766,6 +777,30 @@ body {
     background: #00A092;
 }
 
+.feedback-viewport {
+    width: 1230px;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+.user-opinion-msgs {
+    display: grid;
+    grid-template-columns: repeat(2, 600px);
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    width: max-content;
+    transition: transform 0.4s ease;
+}
+
+.user-opinion-msg {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+    padding: 26px 28px 24px;
+    box-sizing: border-box;
+    width: 500px;
+    min-height: 380px;
+}
 
 /*  ********** final section ************ */
 .final-section {

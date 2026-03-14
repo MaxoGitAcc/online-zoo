@@ -25,8 +25,12 @@ export interface UserProfile {
 export interface Pet {
   id: number;
   name: string;
+  commonName: string;
   description: string;
-  images: string[];
+}
+
+export interface PetsResponse {
+  data: Pet[];
 }
 
 // **** Feedback **** //
@@ -35,6 +39,10 @@ export interface Feedback {
   name: string;
   text: string;
   rating?: number;
+}
+
+export interface FeedbackResponse {
+  data: Feedback[];
 }
 
 // **** Cameras **** //
