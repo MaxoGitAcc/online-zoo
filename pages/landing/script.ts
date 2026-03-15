@@ -1,9 +1,13 @@
+import { initHeader } from "../../src/utils/header";
+
 fetch("/assets/components/header.html")
   .then((res) => res.text())
   .then((html) => {
-    const heeaderRoot = document.getElementById("header-root");
-    if (!heeaderRoot) return;
-    heeaderRoot.innerHTML = html;
+    const headerRoot = document.getElementById("header-root");
+    if (!headerRoot) return;
+    headerRoot.innerHTML = html;
+
+    initHeader();
 
     const page = document.body.dataset.page;
     document.querySelectorAll(".nav-item").forEach((li) => {
