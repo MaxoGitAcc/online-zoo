@@ -1,4 +1,5 @@
 import { initHeader } from "../../src/utils/header";
+import { getPetById } from "../../src/api/api";
 
 fetch("/assets/components/header.html")
   .then((res) => res.text())
@@ -238,23 +239,47 @@ function renderThumbs(d: AnimalData): void {
 
 let currentAnimalKey = "panda";
 
-function setActiveAnimal(animalKey: string): void {
+async function setActiveAnimal(animalKey: string): Promise<void> {
   currentAnimalKey = animalKey;
   const d = data[animalKey];
   if (!d) return;
+
   document.querySelectorAll(".selected-card").forEach((card) => {
     card.classList.toggle("is-active", (card as HTMLElement).dataset.animal === animalKey);
   });
+
   setText("zooHeading", d.heading);
   setText("liveLabel", d.liveLabel);
   setIframeSrc("mainCam", d.mainCam);
   setText("bambooTitle", d.bambooTitle);
   setText("bambooText", d.bambooText);
-  setText("didTitle", d.didTitle);
-  setText("didText", d.didText);
-  setText("longText", d.longText);
-  updateFacts(d);
   renderThumbs(d);
+
+  // fetch Did you know from API
+  const loader = document.getElementById("didLoader");
+  const errorEl = document.getElementById("didError");
+  if (loader) loader.hidden = false;
+
+  const petIdMap: Record<string, number> = {
+    panda: 1,
+    eagles: 5,
+    gorillas: 3,
+    lemurs: 2,
+  };
+
+  try {
+    const petId = petIdMap[animalKey];
+    if (petId) {
+      const pet = await getPetById(petId);
+      if (loader) loader.hidden = true;
+      setText("didText", pet.description);
+      setText("didTitle", "did you know?");
+    }
+    updateFacts(d);
+  } catch {
+    if (loader) loader.hidden = true;
+    if (errorEl) errorEl.hidden = false;
+  }
 }
 
 function openMapModal(animalKey: string): void {
