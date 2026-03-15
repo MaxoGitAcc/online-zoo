@@ -1352,3 +1352,60 @@ body {
 .popupStep.is-active {
     display: block;
 }
+
+.donation-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+}
+
+.donation-notification.success {
+  background: #00A092;
+  color: #fff;
+}
+
+.donation-notification.error {
+  background: #e74c3c;
+  color: #fff;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+#donorNameError,
+#donorEmailError {
+  display: block;
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.userName, .userEmail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.saveCard {
+    margin-left: 6rem;
+    padding: 10px;
+    border-radius: 5px;
+}

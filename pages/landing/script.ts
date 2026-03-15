@@ -262,81 +262,256 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Donation popup
+import { submitDonation, getUserProfile } from "../../src/api/api";
+import { SavedCard } from "../../src/types/types";
+
 const donateBtn = document.querySelector(".donate-btn");
-const template = document.getElementById(
-  "donation-popup-template",
-) as HTMLTemplateElement;
+const template = document.getElementById("donation-popup-template") as HTMLTemplateElement;
 
 let popupInstance: HTMLElement | null = null;
 
-function closePopup() {
+function closePopup(): void {
   if (!popupInstance) return;
   popupInstance.remove();
   popupInstance = null;
+  document.body.style.overflow = "";
+}
+
+function showNotification(message: string, success: boolean): void {
+  const notification = document.createElement("div");
+  notification.className = `donation-notification ${success ? "success" : "error"}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 4000);
 }
 
 if (donateBtn && template) {
-  donateBtn.addEventListener("click", () => {
+  donateBtn.addEventListener("click", async () => {
     if (popupInstance) return;
 
     const clone = template.content.cloneNode(true);
     document.body.appendChild(clone);
+    document.body.style.overflow = "hidden";
 
     popupInstance = document.querySelector(".popup-overlay");
 
-    const closeBtn =
-      popupInstance!.querySelector<HTMLButtonElement>(".popup-close");
-    closeBtn!.addEventListener("click", closePopup);
+    const closeBtn = popupInstance!.querySelector<HTMLButtonElement>(".popup-close");
+    const nextBtn = popupInstance!.querySelector<HTMLButtonElement>(".popupNextBtn");
+    const nextText = popupInstance!.querySelector<HTMLElement>(".popupNextText");
+    const backBtn = popupInstance!.querySelector<HTMLElement>(".popupBackBtn");
+    if (!closeBtn || !nextBtn || !nextText || !backBtn) return;
 
+    closeBtn.addEventListener("click", closePopup);
     popupInstance!.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
       if (target.classList.contains("popup-overlay")) closePopup();
     });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePopup();
+    }, { once: true });
 
-    document.addEventListener(
-      "keydown",
-      (e) => {
-        if (e.key === "Escape") closePopup();
-      },
-      { once: true },
-    );
 
-    const steps = popupInstance!.querySelectorAll(".popupStep");
-    const dots = popupInstance!.querySelectorAll(".dot");
-    const nextBtn =
-      popupInstance!.querySelector<HTMLButtonElement>(".popupNextBtn");
-    const nextText =
-      popupInstance!.querySelector<HTMLButtonElement>(".popupNextText");
-    const backBtn = popupInstance!.querySelector<HTMLElement>(".popupBackBtn");
-    if (!closeBtn || !nextBtn || !nextText || !backBtn) return;
+    let selectedAmount: number | null = null;
+    const amountBtns = popupInstance!.querySelectorAll<HTMLButtonElement>(".donationAmountPopup button");
+    const otherAmountInput = popupInstance!.querySelector<HTMLInputElement>("#otherAmountInput");
+    const otherAmountError = popupInstance!.querySelector<HTMLElement>("#otherAmountError");
+    const petSelect = popupInstance!.querySelector<HTMLSelectElement>("#petSelect");
+
+    function checkStep1(): void {
+      const petSelected = petSelect!.value !== "";
+      const amountValid = selectedAmount !== null && selectedAmount > 0;
+      nextBtn!.disabled = !(petSelected && amountValid);
+    }
+
+    amountBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        amountBtns.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        selectedAmount = Number(btn.dataset.amount);
+        if (otherAmountInput) otherAmountInput.value = btn.dataset.amount ?? "";
+        checkStep1();
+      });
+    });
+
+    otherAmountInput?.addEventListener("input", () => {
+      const val = otherAmountInput.value;
+      const num = Number(val);
+      if (val === "" || isNaN(num) || num <= 0 || /e/i.test(val)) {
+        if (otherAmountError) otherAmountError.textContent = "Please enter a valid amount greater than 0";
+        selectedAmount = null;
+      } else {
+        if (otherAmountError) otherAmountError.textContent = "";
+        selectedAmount = num;
+        amountBtns.forEach(b => b.classList.remove("is-active"));
+      }
+      checkStep1();
+    });
+
+    petSelect?.addEventListener("change", checkStep1);
+    nextBtn.disabled = true;
+
+    const donorName = popupInstance!.querySelector<HTMLInputElement>("#donorName");
+    const donorEmail = popupInstance!.querySelector<HTMLInputElement>("#donorEmail");
+    const donorNameError = popupInstance!.querySelector<HTMLElement>("#donorNameError");
+    const donorEmailError = popupInstance!.querySelector<HTMLElement>("#donorEmailError");
+    const token = localStorage.getItem("token");
+    const saveCardCheckbox = popupInstance!.querySelector<HTMLInputElement>("#saveCardCheckbox");
+
+    if (token && donorName && donorEmail) {
+      try {
+        const profile = await getUserProfile();
+        donorName.value = profile.name;
+        donorEmail.value = profile.email;
+      } catch {}
+    }
+
+    if (token && saveCardCheckbox) {
+      const saveCardLabel = popupInstance!.querySelector<HTMLElement>("#saveCardLabel");
+      if (saveCardLabel) saveCardLabel.hidden = false;
+    }
+
+    function validateDonorName(v: string): string {
+      if (!/^[a-zA-Z ]+$/.test(v)) return "Name should contain only letters and spaces";
+      if (v.trim().length < 1) return "Name is required";
+      return "";
+    }
+
+    function validateDonorEmail(v: string): string {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return "Invalid email format";
+      return "";
+    }
+
+    function checkStep2(): void {
+      if (!donorName || !donorEmail) return;
+      const nameValid = validateDonorName(donorName.value) === "";
+      const emailValid = validateDonorEmail(donorEmail.value) === "";
+      nextBtn!.disabled = !(nameValid && emailValid);
+    }
+
+    donorName?.addEventListener("input", () => {
+      const error = validateDonorName(donorName.value);
+      if (donorNameError) donorNameError.textContent = error;
+      checkStep2();
+    });
+
+    donorEmail?.addEventListener("input", () => {
+      const error = validateDonorEmail(donorEmail.value);
+      if (donorEmailError) donorEmailError.textContent = error;
+      checkStep2();
+    });
+
+    const cardNumber = popupInstance!.querySelector<HTMLInputElement>("#cardNumber");
+    const cardCvv = popupInstance!.querySelector<HTMLInputElement>("#cardCvv");
+    const selectMonth = popupInstance!.querySelector<HTMLSelectElement>("#selectMonth");
+    const selectYear = popupInstance!.querySelector<HTMLSelectElement>("#selectYear");
+    const savedCardsSelect = popupInstance!.querySelector<HTMLSelectElement>("#savedCardsSelect");
+
+    const savedCards: SavedCard[] = JSON.parse(localStorage.getItem("savedCards") ?? "[]");
+    if (savedCards.length > 0 && savedCardsSelect) {
+      savedCardsSelect.hidden = false;
+      savedCards.forEach((card, i) => {
+        const opt = document.createElement("option");
+        opt.value = String(i);
+        opt.textContent = `${card.cardNumber.slice(0, 4)} **** **** ${card.cardNumber.slice(-4)}`;
+        savedCardsSelect.appendChild(opt);
+      });
+      savedCardsSelect.addEventListener("change", () => {
+        const card = savedCards[Number(savedCardsSelect.value)];
+        if (card && cardNumber && cardCvv && selectMonth && selectYear) {
+          cardNumber.value = card.cardNumber;
+          cardCvv.value = card.cvv;
+          const [mm, yy] = card.expiry.split("/");
+          selectMonth.value = String(parseInt(mm));
+          selectYear.value = `20${yy}`;
+          checkStep3();
+        }
+      });
+    }
+
+    function validateCardNumber(v: string): boolean {
+      return /^\d{16}$/.test(v.replace(/\s/g, ""));
+    }
+
+    function validateCvv(v: string): boolean {
+      return /^\d{3}$/.test(v);
+    }
+
+    function validateExpiry(): boolean {
+      if (!selectMonth || !selectYear) return false;
+      const month = parseInt(selectMonth.value);
+      const year = parseInt(selectYear.value);
+      if (!month || !year) return false;
+      const expiry = new Date(year, month - 1);
+      return expiry > new Date();
+    }
+
+    function checkStep3(): void {
+      const cardValid = validateCardNumber(cardNumber?.value ?? "");
+      const cvvValid = validateCvv(cardCvv?.value ?? "");
+      const expiryValid = validateExpiry();
+      nextBtn!.disabled = !(cardValid && cvvValid && expiryValid);
+    }
+
+    cardNumber?.addEventListener("input", checkStep3);
+    cardCvv?.addEventListener("input", checkStep3);
+    selectMonth?.addEventListener("change", checkStep3);
+    selectYear?.addEventListener("change", checkStep3);
 
     let currentStep = 1;
 
-    function showStep(stepNumber: number) {
-      steps.forEach((s) => s.classList.remove("is-active"));
-      dots.forEach((d) => d.classList.remove("is-active"));
-
-      popupInstance!
-        .querySelector(`.popupStep[data-step="${stepNumber}"]`)
-        ?.classList.add("is-active");
-      popupInstance!
-        .querySelector(`.dot[data-dot="${stepNumber}"]`)
-        ?.classList.add("is-active");
-
+    function showStep(stepNumber: number): void {
+      popupInstance!.querySelectorAll(".popupStep").forEach(s => s.classList.remove("is-active"));
+      popupInstance!.querySelectorAll(".dot").forEach(d => d.classList.remove("is-active"));
+      popupInstance!.querySelector(`.popupStep[data-step="${stepNumber}"]`)?.classList.add("is-active");
+      popupInstance!.querySelector(`.dot[data-dot="${stepNumber}"]`)?.classList.add("is-active");
       currentStep = stepNumber;
-
       backBtn!.hidden = currentStep === 1;
+      nextText!.textContent = currentStep === 3 ? "Donate" : "Next";
 
-      nextText!.textContent = currentStep === 3 ? "Finish" : "Next";
+      if (stepNumber === 1) { checkStep1(); }
+      if (stepNumber === 2) { checkStep2(); }
+      if (stepNumber === 3) { nextBtn!.disabled = true; checkStep3(); }
     }
 
-    nextBtn.addEventListener("click", () => {
-      if (currentStep < 3) showStep(currentStep + 1);
-      else closePopup();
+    nextBtn.addEventListener("click", async () => {
+      if (currentStep < 3) {
+        showStep(currentStep + 1);
+      } else {
+        try {
+          await submitDonation({
+            name: donorName?.value ?? "",
+            email: donorEmail?.value ?? "",
+            amount: selectedAmount!,
+            petId: Number(petSelect?.value),
+          });
+
+          if (saveCardCheckbox?.checked && cardNumber && cardCvv && selectMonth && selectYear) {
+            const month = selectMonth.value.padStart(2, "0");
+            const year = selectYear.value.slice(-2);
+            const newCard: SavedCard = {
+              cardNumber: cardNumber.value.replace(/\s/g, ""),
+              expiry: `${month}/${year}`,
+              cvv: cardCvv.value,
+            };
+            const existing: SavedCard[] = JSON.parse(localStorage.getItem("savedCards") ?? "[]");
+            existing.push(newCard);
+            localStorage.setItem("savedCards", JSON.stringify(existing));
+          }
+
+          closePopup();
+          showNotification(`Thank you for your donation of $${selectedAmount} to ${petSelect?.options[petSelect.selectedIndex]?.text}!`, true);
+        } catch {
+          closePopup();
+          showNotification("Something went wrong. Please, try again later.", false);
+        }
+      }
     });
 
     backBtn.addEventListener("click", () => {
       if (currentStep > 1) showStep(currentStep - 1);
     });
+
+    showStep(1);
   });
 }

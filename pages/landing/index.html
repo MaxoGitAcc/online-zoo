@@ -369,21 +369,21 @@
 
                             <div class="otherAmountPopup">
                                 <button type="button" data-amount="OTHER">OTHER AMOUNT</button>
-                                <input type="text" placeholder="Enter amount" />
+                                <input type="text" id="otherAmountInput" placeholder="Enter amount" />
+                                <span class="input-error" id="otherAmountError"></span>
                             </div>
 
                             <div class="petSelctionPopup">
-                                <button type="button">FOR SPECIAL PET</button>
-                                <select>
+                                <select id="petSelect">
                                     <option value="" selected disabled>Choose your Favourite</option>
-                                    <option>Lukas the Panda</option>
-                                    <option>Andy the Lemur</option>
-                                    <option>Glen the Gorilla</option>
-                                    <option>Mike the Alligator</option>
-                                    <option>Sam & Lora the eagles family</option>
-                                    <option>Liz the Koala</option>
-                                    <option>Shake the Lion</option>
-                                    <option>Senja the Tiger</option>
+                                    <option value="1">Lukas the Panda</option>
+                                    <option value="2">Andy the Lemur</option>
+                                    <option value="3">Glen the Gorilla</option>
+                                    <option value="4">Mike the Alligator</option>
+                                    <option value="5">Sam & Lora the eagles family</option>
+                                    <option value="6">Liz the Koala</option>
+                                    <option value="7">Shake the Lion</option>
+                                    <option value="8">Senja the Tiger</option>
                                 </select>
                             </div>
 
@@ -404,11 +404,11 @@
                             <div class="userInformation">
                                 <div class="userName">
                                     <h4>*Your Name</h4>
-                                    <input type="text" placeholder="First and last name">
+                                    <input type="text" id="donorName" placeholder="First and last name">
                                 </div>
                                 <div class="userEmail">
                                     <h4>Your Email Address</h4>
-                                    <input type="email" placeholder="Enter your email">
+                                    <input type="email" id="donorEmail" placeholder="Enter your email">
                                 </div>
                                 <p>
                                     You will receive emails from the Online Zoo, including updates and news
@@ -426,17 +426,17 @@
                             <div class="userCard">
                                 <div class="userCardNumbers">
                                     <h4>*Card Number</h4>
-                                    <input type="text">
+                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
                                 </div>
                                 <div class="userCVV">
                                     <h4>*CVV</h4>
-                                    <input type="text">
+                                    <input type="text" id="cardCvv" placeholder="123">
                                 </div>
                             </div>
                             <div class="userCardDate">
                                 <h4>Expiration Date</h4>
                                 <div class="userCardSections">
-                                    <select class="selectMonth">
+                                    <select class="selectMonth" id="selectMonth">
                                         <option value="" selected disabled>Month</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -452,15 +452,27 @@
                                         <option>12</option>
                                     </select>
 
-                                    <select class="selectYear">
+                                    <select class="selectYear" id="selectYear">
                                         <option value="" selected disabled>Year</option>
-                                        <option>2069</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
+
+                        <select id="savedCardsSelect" class="saveCard" hidden>
+                            <option value="" disabled selected>Select saved card</option>
+                        </select>
                     </section>
                 </div>
+
+                <span class="input-error" id="donorNameError"></span>
+                <span class="input-error" id="donorEmailError"></span>
 
                 <footer class="bottomControlDonationPopup">
                     <div class="stepDots" aria-label="Donation steps">
