@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body data-page="zoos">
@@ -325,9 +327,7 @@
                             <h2>Diet: <span id="factDiet">Omnivore</span></h2>
                             <h2>Habitat: <span id="factHabitat">Forests</span></h2>
                             <h2> Range: <span id="factRange">Eastern Asia</span>
-                                <a id="mapLink" href="/online-zoo/pages/map/index.html">
-                                    <button class="viewMap">VIEW MAP→</button>
-                                </a>
+                                <button class="viewMap">VIEW MAP→</button>
                             </h2>
                         </div>
 
@@ -356,7 +356,7 @@
 
     <footer id="footer-root"></footer>
 
-    <script type="module" src="script.js"></script>
+    <script type="module" src="script.ts"></script>
 </body>
 
 </html>
