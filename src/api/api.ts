@@ -66,10 +66,12 @@ export async function getCameras(): Promise<Camera[]> {
 
 // ****  Auth **** //
 export async function loginUser(data: LoginRequest): Promise<AuthResponse> {
-  return request<AuthResponse>("/auth/login", {
+  const response = await request<AuthResponse>("/auth/login", {
     method: "POST",
     body: JSON.stringify(data),
   });
+  console.log("login response:", response);
+  return response;
 }
 
 export async function registerUser(data: RegisterRequest): Promise<AuthResponse> {
@@ -80,7 +82,8 @@ export async function registerUser(data: RegisterRequest): Promise<AuthResponse>
 }
 
 export async function getUserProfile(): Promise<UserProfile> {
-  return request<UserProfile>("/auth/profile");
+  const response = await request<{ data: UserProfile }>("/auth/profile");
+  return response.data;
 }
 
 // ****  Donations **** //

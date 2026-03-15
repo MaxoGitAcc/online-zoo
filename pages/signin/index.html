@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../assets/components/components.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body data-page="signin">
+    <header id="header-root"></header>
+
+      <main class="signin-page">
+        <div class="signin-container">
+            <h2>SIGN IN</h2>
+
+            <div class="input-wrap">
+                <label>Login</label>
+                <input type="text" id="loginInput" placeholder="Enter your login" />
+                <span class="input-error" id="loginError"></span>
+            </div>
+
+            <div class="input-wrap">
+                <label>Password</label>
+                <input type="password" id="passwordInput" placeholder="Enter your password" />
+                <span class="input-error" id="passwordError"></span>
+            </div>
+
+            <span class="form-error" id="formError"></span>
+
+            <button class="signin-btn" id="signinBtn" disabled>SIGN IN</button>
+
+            <p>Don't have an account? <a href="../register/index.html">Register</a></p>
+        </div>
+    </main>
+
+    <footer id="footer-root"></footer>
+
+     <script type="module" src="script.ts"></script>
+</body>
+
+</html>

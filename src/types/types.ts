@@ -12,7 +12,11 @@ export interface RegisterRequest {
 }
 
 export interface AuthResponse {
-  token: string;
+  data: {
+    access_token: string;
+    user: UserProfile;
+  };
+  message: string;
 }
 
 export interface UserProfile {
