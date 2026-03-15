@@ -103,47 +103,39 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function setupMeetPetsButtons() {
-  const viewport = document.querySelector<HTMLElement>(
-    ".animal-cards-viewport",
-  );
+function setupMeetPetsButtons(): void {
+  const viewport = document.querySelector<HTMLElement>(".animal-cards-viewport");
   const grid = document.querySelector<HTMLElement>(".animal-cards");
   const left = document.querySelector<HTMLButtonElement>(".listBtnLeft");
   const right = document.querySelector<HTMLButtonElement>(".listBtnRight");
   if (!viewport || !grid || !left || !right) return;
 
-  function getPageWidth() {
+  function getPageWidth(): number {
     const card = grid!.querySelector(".animal-card");
     if (!card) return 0;
-
     const cardW = card.getBoundingClientRect().width;
     const styles = getComputedStyle(grid!);
     const gap = parseFloat(styles.gap) || 30;
-
     return cardW * 4 + gap * 3;
   }
 
-  function updateDisabled() {
-    const maxScroll = viewport!.scrollWidth - viewport!.clientWidth;
-
-    left!.disabled = viewport!.scrollLeft <= 0;
-    right!.disabled = viewport!.scrollLeft >= maxScroll - 1;
-  }
-
   left.addEventListener("click", () => {
-    viewport.scrollBy({ left: -getPageWidth(), behavior: "smooth" });
-    setTimeout(updateDisabled, 400);
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    if (viewport.scrollLeft <= 0) {
+      viewport.scrollTo({ left: maxScroll, behavior: "smooth" });
+    } else {
+      viewport.scrollBy({ left: -getPageWidth(), behavior: "smooth" });
+    }
   });
 
   right.addEventListener("click", () => {
-    viewport.scrollBy({ left: getPageWidth(), behavior: "smooth" });
-    setTimeout(updateDisabled, 400);
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    if (viewport.scrollLeft >= maxScroll - 1) {
+      viewport.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      viewport.scrollBy({ left: getPageWidth(), behavior: "smooth" });
+    }
   });
-
-  viewport.addEventListener("scroll", updateDisabled);
-  window.addEventListener("resize", updateDisabled);
-
-  updateDisabled();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -199,13 +191,27 @@ function setupFeedbackButtons(): void {
   let currentPage = 0;
   const pageWidth = 1230 + 30;
 
+  function getTotalPages(): number {
+    return Math.ceil(msgs!.children.length / 4);
+  }
+
   btns[0].addEventListener("click", () => {
-    if (currentPage > 0) currentPage--;
+    const total = getTotalPages();
+    if (currentPage <= 0) {
+      currentPage = total - 1;
+    } else {
+      currentPage--;
+    }
     msgs.style.transform = `translateX(-${currentPage * pageWidth}px)`;
   });
 
   btns[1].addEventListener("click", () => {
-    currentPage++;
+    const total = getTotalPages();
+    if (currentPage >= total - 1) {
+      currentPage = 0;
+    } else {
+      currentPage++;
+    }
     msgs.style.transform = `translateX(-${currentPage * pageWidth}px)`;
   });
 }
