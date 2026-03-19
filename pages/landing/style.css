@@ -1409,3 +1409,495 @@ body {
     padding: 10px;
     border-radius: 5px;
 }
+
+
+/* ******* GLOBAL FIX ******* */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ******* HERO SECTION ******* */
+@media (max-width: 1440px) {
+    .hero-section {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 700px;
+    }
+
+    .hero-container h1 {
+        font-size: 62px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-container h1 {
+        font-size: 48px;
+        max-width: 100%;
+    }
+
+    .hero-container p {
+        font-size: 16px;
+    }
+
+    .btnToLiveCam {
+        width: 200px;
+        height: 60px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+       min-height: auto;
+       height: auto;
+       padding-bottom: 40px;
+    }
+
+    body {
+        background-size: cover;
+        background-position: center top;
+    }
+
+    .hero-container {
+        margin-top: 2rem;
+        padding: 0 20px;
+    }
+
+    .hero-container h1 {
+        font-size: 36px;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-container p {
+        font-size: 15px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container h1 {
+        font-size: 28px;
+    }
+}
+
+/* ******* WELCOME SECTION ******* */
+@media (max-width: 1440px) {
+    .welcome-container {
+        width: 90%;
+        gap: 4rem;
+    }
+
+    .intro-image1,
+    .intro-image2 {
+        width: 55%;
+        height: auto;
+    }
+
+    .intro1,
+    .intro2 {
+        width: 40%;
+    }
+
+    .intro1 h2,
+    .intro2 h2 {
+        font-size: 40px;
+        margin-bottom: 2rem;
+    }
+
+    .wlfooter-container {
+        width: 90%;
+    }
+
+    .wlfLeft p {
+        width: auto;
+    }
+
+    .wlfLeft h3 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .first-intrudaction,
+    .second-intrudaction {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .second-intrudaction {
+        flex-direction: column-reverse;
+    }
+
+    .intro1,
+    .intro2 {
+        width: 100%;
+    }
+
+    .intro-image1,
+    .intro-image2 {
+        width: 100%;
+        height: 400px;
+    }
+
+    .intro1 h2,
+    .intro2 h2 {
+        font-size: 34px;
+        margin-bottom: 1.5rem;
+    }
+
+    .welcome-footer {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .wlfooter-container {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .wlfLeft h3 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-container {
+        width: 90%;
+        gap: 3rem;
+    }
+
+    .intro1 h2,
+    .intro2 h2 {
+        font-size: 28px;
+    }
+
+    .intro-image1,
+    .intro-image2 {
+        height: 280px;
+    }
+
+    .wlfLeft h3 {
+        font-size: 22px;
+    }
+
+    .wlfLeft p {
+        font-size: 15px;
+    }
+
+    .wlfRigth-donation {
+        width: 100%;
+    }
+}
+
+/* ******* MEET PETS ******* */
+@media (max-width: 1440px) {
+    .meet-pets-container {
+        width: 90%;
+    }
+
+    .meet-pets-container h2 {
+        font-size: 42px;
+    }
+
+    .meet-pets-container p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .meet-pets-container h2 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .meet-pets-container p {
+        font-size: 16px;
+        padding: 0 16px;
+    }
+
+    .animal-card {
+        width: 300px;
+        height: auto;
+        min-height: 560px;
+    }
+}
+
+/* ******* PAY AND FEED ******* */
+@media (max-width: 1440px) {
+    .pay-and-feed-container {
+        width: 85%;
+    }
+
+    .pay-and-feed-title {
+        font-size: 42px;
+    }
+
+    .feedFirst img {
+        width: 420px;
+        height: auto;
+    }
+
+    .feedFirstTxt {
+        margin-left: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .feedFirst {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .feedFirst img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .feedFirstTxt {
+        margin-left: 0;
+    }
+
+    .feedFirstTxt h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pay-and-feed-container {
+        width: 90%;
+    }
+
+    .pay-and-feed-title {
+        font-size: 32px;
+        padding-top: 3rem;
+    }
+
+    .feedFirst img {
+        height: 220px;
+    }
+
+    .feedBtn {
+        padding: 18px 30px;
+        font-size: 16px;
+    }
+}
+
+/* ******* USER OPINION ******* */
+@media (max-width: 1440px) {
+    .user-opinion-container {
+        width: 85%;
+    }
+
+    .opinion-top-section {
+        grid-template-columns: 360px 1fr;
+        gap: 40px;
+    }
+
+    .feedback-viewport {
+        width: 100%;
+    }
+
+    .user-opinion-msgs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .user-opinion-msg {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .opinion-top-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .opinion-top-section-left h3 {
+        font-size: 40px;
+    }
+
+    .user-opinion-msgs {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        width: max-content;
+    }
+
+    .user-opinion-msg {
+        width: 340px;
+        height: 420px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    .feedback-viewport {
+        width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-opinion-container {
+        width: 90%;
+    }
+
+    .opinion-top-section {
+        padding-top: 60px;
+    }
+
+    .opinion-top-section-left h3 {
+        font-size: 30px;
+    }
+
+    .opinion-top-section-left p {
+        font-size: 16px;
+    }
+
+    .opinine-leave-feadback-btn {
+        margin-top: 4rem;
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+
+    .user-opinion-msgs {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        width: max-content;
+    }
+
+    .user-opinion-msg {
+        width: 300px;
+        height: 420px;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1440px) {
+    .final-section-container {
+        width: 85%;
+    }
+
+    .final-section-container h2 {
+        font-size: 42px;
+    }
+
+    .bigKoala {
+        max-width: 70%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .first-lina-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bigKoala {
+        max-width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .card {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        min-height: 500px;
+    }
+
+    .final-second-line {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .final-section-container {
+        width: 90%;
+    }
+
+    .final-section-container h2 {
+        font-size: 30px;
+    }
+
+    .final-section-container > p {
+        font-size: 18px;
+    }
+
+    .bigKoala {
+        height: 260px;
+    }
+
+    .lastImg {
+        height: auto;
+    }
+}
+
+/* ******* POPUPS ******* */
+@media (max-width: 768px) {
+    .welcome-popup-container {
+        width: 95%;
+        height: auto;
+    }
+
+    .welcome-popup-container img {
+        width: 100%;
+        height: 220px;
+    }
+
+    .welcome-popup-container h2 {
+        font-size: 28px;
+    }
+
+    .popup1-btns {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0 1rem 1rem;
+    }
+
+    .donation-popup {
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .dontaionHeader {
+        font-size: 28px;
+        height: auto;
+        padding: 24px;
+    }
+
+    .popupContentContainer {
+        padding: 2rem 1.5rem;
+    }
+
+    .donation-popup h3 {
+        margin: 1.5rem 0 0 1.5rem;
+    }
+
+    .donationAmountPopup {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .otherAmountPopup {
+        flex-direction: column;
+    }
+
+    .bottomControlDonationPopup {
+        position: relative;
+        padding: 20px;
+    }
+}

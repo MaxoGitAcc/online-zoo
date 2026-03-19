@@ -165,3 +165,72 @@ body {
     top: 69.5%;
     left: 75.5%;
 }
+
+/* ******* MAP RESPONSIVE ******* */
+@media (max-width: 1024px) {
+    .map-container {
+        width: 90%;
+        padding-top: 50px;
+    }
+
+    .title h2 {
+        font-size: 40px;
+    }
+
+    .map img {
+        width: 100%;
+        height: auto;
+    }
+
+    .pin {
+        width: 60px;
+        height: 90px;
+    }
+
+    .pin-animal {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        width: 95%;
+        padding-top: 30px;
+    }
+
+    .title h2 {
+        font-size: 28px;
+    }
+
+    .map img {
+        width: 100%;
+        height: auto;
+    }
+
+    .pin {
+        width: 44px;
+        height: 66px;
+    }
+
+    .pin-animal {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title h2 {
+        font-size: 22px;
+    }
+
+    .pin {
+        width: 34px;
+        height: 50px;
+    }
+
+    .pin-animal {
+        width: 16px;
+        height: 16px;
+    }
+}

@@ -103,3 +103,15 @@ body {
     color: #F58021;
     font-weight: 600;
 }
+
+/* ******* REGISTER RESPONSIVE ******* */
+@media (max-width: 480px) {
+    .register-container {
+        padding: 24px 16px;
+        margin: 0 16px;
+    }
+
+    .register-page {
+        padding: 4rem 16px;
+    }
+}

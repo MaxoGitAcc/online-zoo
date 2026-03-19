@@ -559,31 +559,365 @@ body {
 }
 
 .map-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
 .map-modal-content {
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  width: 90%;
-  max-width: 700px;
-  position: relative;
+    background: #fff;
+    border-radius: 8px;
+    padding: 40px 20px 20px;
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    box-sizing: border-box;
+    max-height: 90vh;
+    overflow: hidden;
 }
 
 .map-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 10;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+
+/* ******* ZOOS RESPONSIVE ******* */
+@media (max-width: 1200px) {
+    .zoo-content > :not(.bamboo) {
+        width: 85%;
+    }
+
+    .zoo-top h2 {
+        font-size: 40px;
+    }
+
+    .bamboo-inner {
+        width: 90%;
+        gap: 4rem;
+    }
+
+    .bamboo-left h4 {
+        font-size: 32px;
+    }
+
+    .description {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .zoo-content > :not(.bamboo) {
+        width: 90%;
+    }
+
+    .zoo-top h2 {
+        font-size: 32px;
+    }
+
+    .donation-btn {
+        font-size: 14px;
+        padding: 14px 16px;
+    }
+
+    .more-live h3 {
+        font-size: 32px;
+    }
+
+    .bamboo-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .par h2 {
+        font-size: 32px;
+    }
+
+    .par p {
+        font-size: 20px;
+    }
+
+    .desc h2 {
+        font-size: 20px;
+    }
+
+    .description {
+        flex-direction: column;
+        gap: 2rem;
+        margin-left: 0;
+    }
+
+    .right-img img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --side-nav-collapsed: 60px;
+        --side-nav-open: 280px;
+    }
+
+    /* ── Side nav becomes horizontal strip ── */
+    .zoo-page-container {
+        flex-direction: column;
+    }
+
+    .side-nav {
+        width: 100% !important;
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: visible;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        padding: 8px 12px;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        box-sizing: border-box;
+    }
+
+    .side-nav.is-open {
+        width: 100% !important;
+    }
+
+    .go-live {
+        position: static;
+        font-size: 14px;
+        padding: 6px 12px;
+        flex-shrink: 0;
+    }
+
+    .arrow,
+    .arrow-down {
+        display: none;
+    }
+
+    .side-nav hr {
+        display: none;
+    }
+
+    .selected-card {
+        padding: 6px;
+        flex-shrink: 0;
+    }
+
+    .card-bg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-animal {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card-text {
+        display: none !important;
+    }
+
+    .side-nav.is-open .selected-card {
+        padding: 6px;
+        padding-left: 6px;
+        justify-content: center;
+    }
+
+    .side-nav.is-open .card-bg {
+        display: block;
+    }
+
+    .side-nav.is-open .card-animal {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* ── Zoo content ── */
+    .zoo-content {
+        width: 100%;
+        padding: 16px 0;
+        box-sizing: border-box;
+    }
+
+    .zoo-content > :not(.bamboo) {
+        width: 92%;
+    }
+
+    .zoo-top {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .zoo-top h2 {
+        font-size: 26px;
+    }
+
+    .donation-btn {
+        position: static;
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .live-cam-label {
+        position: static;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .more-live h3 {
+        font-size: 24px;
+        margin-top: 2rem;
+    }
+
+    .more-live-track {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .thumb-tag {
+        font-size: 16px;
+        padding: 3px 8px;
+    }
+
+    /* ── Bamboo ── */
+    .bamboo {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 4rem;
+        box-sizing: border-box;
+    }
+
+    .zoo-content > .bamboo {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .bamboo-inner {
+        width: 92%;
+        margin: 0 auto;
+        padding: 24px 0;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+        box-sizing: border-box;
+    }
+
+    .bamboo-left h4 {
+        font-size: 24px;
+    }
+
+    .bamboo-left p {
+        font-size: 15px;
+    }
+
+    .quick-donate {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        position: static;
+    }
+
+    .quick-donate input {
+        padding: 16px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .quick-donate button {
+        position: static;
+        transform: none;
+        padding: 16px 20px;
+        width: auto;
+    }
+
+    /* ── Did you know ── */
+    .did-you-know {
+        margin-top: 4rem;
+        padding: 12px;
+    }
+
+    .par {
+        margin-top: 4rem;
+        max-width: 100%;
+    }
+
+    .par h2 {
+        font-size: 26px;
+    }
+
+    .par p {
+        font-size: 16px;
+        padding: 0 12px;
+    }
+
+    .description {
+        margin-top: 4rem;
+        margin-left: 0;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .desc h2 {
+        font-size: 18px;
+    }
+
+    .desc h2 span {
+        font-size: 15px;
+    }
+
+    .right-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .last-bottom {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .zoo-top h2 {
+        font-size: 20px;
+    }
+
+    .more-live-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .thumb-tag {
+        font-size: 13px;
+    }
+
+    .bamboo-left h4 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-modal-content {
+        padding: 36px 12px 12px;
+    }
+
+    #leafletMap {
+        height: 260px !important;
+    }
 }

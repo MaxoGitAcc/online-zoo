@@ -39,4 +39,24 @@ export async function initHeader(): Promise<void> {
   document.addEventListener("click", () => {
     userPopup.hidden = true;
   });
+
+  // Hamburger
+  const hamburger = document.getElementById("hamburgerBtn");
+  const rightSide = document.getElementById("rightSide");
+
+  if (hamburger && rightSide) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("open");
+      rightSide.classList.toggle("nav-open");
+      document.body.style.overflow = rightSide.classList.contains("nav-open") ? "hidden" : "";
+    });
+
+    rightSide.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("open");
+        rightSide.classList.remove("nav-open");
+        document.body.style.overflow = "";
+      });
+    });
+  }
 }
