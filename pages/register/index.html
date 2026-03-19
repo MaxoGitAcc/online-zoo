@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../assets/components/components.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body data-page="register">
+    <header id="header-root"></header>
+
+      <main class="register-page">
+        <div class="register-container">
+            <h2>REGISTER</h2>
+
+            <div class="input-wrap">
+                <label>Name</label>
+                <input type="text" id="nameInput" placeholder="Enter your name" />
+                <span class="input-error" id="nameError"></span>
+            </div>
+
+            <div class="input-wrap">
+                <label>Email</label>
+                <input type="email" id="emailInput" placeholder="Enter your email" />
+                <span class="input-error" id="emailError"></span>
+            </div>
+
+            <div class="input-wrap">
+                <label>Login</label>
+                <input type="text" id="loginInput" placeholder="Enter your login" />
+                <span class="input-error" id="loginError"></span>
+            </div>
+
+            <div class="input-wrap">
+                <label>Password</label>
+                <input type="password" id="passwordInput" placeholder="Enter your password" />
+                <span class="input-error" id="passwordError"></span>
+            </div>
+
+            <div class="input-wrap">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPasswordInput" placeholder="Confirm your password" />
+                <span class="input-error" id="confirmPasswordError"></span>
+            </div>
+
+            <span class="form-error" id="formError"></span>
+
+            <button class="register-btn" id="registerBtn" disabled>REGISTER</button>
+
+            <p>Already have an account? <a href="../signin/index.html">Sign In</a></p>
+        </div>
+    </main>
+
+    <footer id="footer-root"></footer>
+
+     <script type="module" src="script.ts"></script>
+</body>
+
+</html>
