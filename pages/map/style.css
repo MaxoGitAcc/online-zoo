@@ -1,3 +1,23 @@
+:root {
+    --map-page-bg: #ffffff;
+    --map-title-color: #20113D;
+    --pin-fill: #F58021;
+    --pin-hover-fill: #ffffff;
+    --pin-hover-stroke: #20113D;
+    --pin-animal-fill: #20113D;
+    --pin-shadow: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+[data-theme="dark"] {
+    --map-page-bg: #0d0127;
+    --map-title-color: #ffffff;
+    --pin-fill: #F58021;
+    --pin-hover-fill: #2a2340;
+    --pin-hover-stroke: #ffffff;
+    --pin-animal-fill: #ffffff;
+    --pin-shadow: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
+
 html,
 body {
     height: 100%;
@@ -15,7 +35,8 @@ body {
 .map-page {
     flex: 1;
     display: flex;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    background: var(--map-page-bg);
 }
 
 .map-container {
@@ -38,7 +59,7 @@ body {
 }
 
 .title h2 {
-    color: #20113D;
+    color: var(--map-title-color);
     text-align: center;
 
     font-size: 54px;
@@ -89,22 +110,21 @@ body {
 }
 
 .pin-shape {
-    fill: #F58021;
+    fill: var(--pin-fill);
     stroke: transparent;
     stroke-width: 0;
     transition: fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease;
 }
 
 .pin:hover .pin-shape {
-    fill: #ffffff;
-    stroke: #20113D;
+    fill: var(--pin-hover-fill);
+    stroke: var(--pin-hover-stroke);
     stroke-width: 2;
 }
 
 .pin:hover .pin-tag {
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+    filter: var(--pin-shadow);
 }
-
 
 .pin-animal {
     position: absolute;
@@ -118,7 +138,7 @@ body {
 }
 
 .pin-animal path {
-    fill: #20113D;
+    fill: var(--pin-animal-fill);
     transition: fill 0.25s ease;
 }
 

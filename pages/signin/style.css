@@ -1,4 +1,33 @@
-html,
+:root {
+    --signin-page-bg: #0d0127;
+    --signin-container-bg: #fff;
+    --signin-title-color: #20113D;
+    --signin-label-color: #20113D;
+    --signin-input-bg: #fff;
+    --signin-input-text: #20113D;
+    --signin-input-border: #ccc;
+    --signin-error-color: red;
+    --signin-btn-bg: #20113D;
+    --signin-btn-text: #fff;
+    --signin-btn-hover-bg: #F58021;
+    --signin-link-color: #F58021;
+}
+
+[data-theme="dark"] {
+    --signin-page-bg: #0d0127;
+    --signin-container-bg: #1b1430;
+    --signin-title-color: #fff;
+    --signin-label-color: #fff;
+    --signin-input-bg: #2a2340;
+    --signin-input-text: #fff;
+    --signin-input-border: #5a5470;
+    --signin-error-color: #ff6b6b;
+    --signin-btn-bg: #F58021;
+    --signin-btn-text: #fff;
+    --signin-btn-hover-bg: #ff9a4a;
+    --signin-link-color: #F58021;
+}
+
 body {
     height: 100%;
 }
@@ -17,11 +46,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0d0127;
+    background: var(--signin-page-bg);
 }
 
 .signin-container {
-    background: #fff;
+    background: var(--signin-container-bg);
     padding: 40px;
     border-radius: 8px;
     width: 100%;
@@ -33,7 +62,7 @@ body {
 
 .signin-container h2 {
     text-align: center;
-    color: #20113D;
+    color: var(--signin-title-color);
     margin-bottom: 8px;
 }
 
@@ -45,29 +74,31 @@ body {
 
 .input-wrap label {
     font-weight: 600;
-    color: #20113D;
+    color: var(--signin-label-color);
 }
 
 .input-wrap input {
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--signin-input-border);
     border-radius: 5px;
     font-size: 16px;
     outline: none;
+    background: var(--signin-input-bg);
+    color: var(--signin-input-text);
 }
 
 .input-wrap input.invalid {
-    border-color: red;
+    border-color: var(--signin-error-color);
 }
 
 .input-error {
-    color: red;
+    color: var(--signin-error-color);
     font-size: 13px;
     min-height: 18px;
 }
 
 .form-error {
-    color: red;
+    color: var(--signin-error-color);
     font-size: 14px;
     text-align: center;
     min-height: 18px;
@@ -75,8 +106,8 @@ body {
 
 .signin-btn {
     padding: 14px;
-    background: #20113D;
-    color: #fff;
+    background: var(--signin-btn-bg);
+    color: var(--signin-btn-text);
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -91,15 +122,16 @@ body {
 }
 
 .signin-btn:hover:not(:disabled) {
-    background: #F58021;
+    background: var(--signin-btn-hover-bg);
 }
 
 .signin-container p {
     text-align: center;
+    color: var(--signin-title-color);
 }
 
 .signin-container a {
-    color: #F58021;
+    color: var(--signin-link-color);
     font-weight: 600;
 }
 

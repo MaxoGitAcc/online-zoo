@@ -1,3 +1,63 @@
+:root {
+    --page-bg: #ffffff;
+    --text-color: #000000;
+    --title-color: #00A092;
+    --input-bg: #ffffff;
+    --input-text: #000000;
+    --input-border: #20113D;
+    --button-bg: #00A092;
+    --button-hover: #008a7d;
+    --card-bg: #20113D;
+    --card-text: #ffffff;
+    --welcome-footer-bg: #20113D;
+    --welcome-footer-text: #ffffff;
+    --pay-feed-bg: #20113D;
+    --pay-feed-text: #ffffff;
+    --opinion-msg-bg: #ffffff;
+    --opinion-msg-text: #000000;
+    --opinion-msg-title: #00A092;
+    --final-p-color: #20113D;
+    --popup-bg: #ffffff;
+    --popup-text: #000000;
+    --popup-header-bg: #F58021;
+    --dot-inactive: #CDE8E5;
+    --dot-active: #00A092;
+    --select-bg: #ffffff;
+    --select-text: #000000;
+    --border-color: #20113D;
+    --savcard-bg: transparent;
+}
+
+[data-theme="dark"] {
+    --page-bg: #181818;
+    --text-color: #f3f3f3;
+    --title-color: #5fd6cb;
+    --input-bg: #242424;
+    --input-text: #f3f3f3;
+    --input-border: #5a5a5a;
+    --button-bg: #00A092;
+    --button-hover: #00b3a3;
+    --card-bg: #2a1f4a;
+    --card-text: #f3f3f3;
+    --welcome-footer-bg: #0f0a1e;
+    --welcome-footer-text: #f3f3f3;
+    --pay-feed-bg: #0f0a1e;
+    --pay-feed-text: #f3f3f3;
+    --opinion-msg-bg: #242424;
+    --opinion-msg-text: #f3f3f3;
+    --opinion-msg-title: #5fd6cb;
+    --final-p-color: #a89fc4;
+    --popup-bg: #242424;
+    --popup-text: #f3f3f3;
+    --popup-header-bg: #c96a10;
+    --dot-inactive: #4a4a6a;
+    --dot-active: #00A092;
+    --select-bg: #2e2e2e;
+    --select-text: #f3f3f3;
+    --border-color: #5a5a5a;
+    --savcard-bg: #2e2e2e;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -9,6 +69,8 @@ body {
     background-repeat: no-repeat;
 
     font-family: "Montserrat", sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-color);
 }
 
 .loader {
@@ -41,7 +103,7 @@ body {
 }
 
 .hero-container h1 {
-    color: #00A092;
+    color: var(--title-color);
     font-size: 82px;
     font-style: normal;
     font-weight: 800;
@@ -53,7 +115,7 @@ body {
 }
 
 .hero-container p {
-    color: #000;
+    color: var(--text-color);
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -91,7 +153,7 @@ body {
 /* ******* WELCOME SECTION ********** */
 .welcome-section {
     padding-bottom: 120px;
-    background: #ffffff;
+    background: var(--page-bg);
 }
 
 .welcome-container {
@@ -119,7 +181,7 @@ body {
 .intro1 h2 {
     font-size: 54px;
     font-weight: 600;
-    color: #00A092;
+    color: var(--title-color);
     text-transform: uppercase;
     margin-bottom: 4rem;
 }
@@ -128,6 +190,7 @@ body {
     font-size: 18px;
     font-weight: 400;
     line-height: 150%;
+    color: var(--text-color);
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -158,7 +221,7 @@ body {
 .intro2 h2 {
     font-size: 54px;
     font-weight: 600;
-    color: #00A092;
+    color: var(--title-color);
     text-transform: uppercase;
     margin-bottom: 4rem;
 }
@@ -167,6 +230,7 @@ body {
     font-size: 18px;
     font-weight: 400;
     line-height: 150%;
+    color: var(--text-color);
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -184,8 +248,8 @@ body {
 
 /* welcome-footer */
 .welcome-footer {
-    background-color: #20113D;
-    color: white;
+    background-color: var(--welcome-footer-bg);
+    color: var(--welcome-footer-text);
     width: 100%;
     height: 220px;
     margin-top: 6rem;
@@ -283,7 +347,7 @@ body {
 }
 
 .meet-pets-container h2 {
-    color: #00A092;
+    color: var(--title-color);
     font-size: 54px;
     font-style: normal;
     font-weight: 600;
@@ -292,6 +356,7 @@ body {
 }
 
 .meet-pets-container p {
+    color: var(--text-color);
     text-align: center;
     font-size: 26px;
     font-style: normal;
@@ -314,7 +379,7 @@ body {
     border-radius: 5px;
     padding: 18px 25px;
     cursor: pointer;
-    color: black;
+    color: var(--text-color);
     margin-top: 4rem;
 }
 
@@ -361,7 +426,7 @@ body {
 }
 
 .animal-card {
-    background: #20113d;
+    background: var(--card-bg);
     border-radius: 5px;
     overflow: hidden;
 
@@ -392,7 +457,7 @@ body {
     top: 0;
     left: 0;
     color: #fff;
-    background-color: #20113D;
+    background-color: var(--card-bg);
     padding: 12px 19px;
     border-radius: 5px 0;
 
@@ -413,7 +478,7 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
-    color: #FFF;
+    color: var(--card-text);
     text-align: center;
 }
 
@@ -422,7 +487,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    color: #FFF;
+    color: var(--card-text);
     text-align: center;
     width: 80%;
 }
@@ -464,6 +529,8 @@ body {
     line-height: normal;
     text-transform: uppercase;
     cursor: pointer;
+    color: var(--text-color);
+    border-color: var(--text-color);
 }
 
 .choose-favorite-btn:hover {
@@ -478,7 +545,7 @@ body {
 /*  ******** pay-and-feed ******** */
 .pay-and-feed {
     width: 100%;
-    background-color: #20113D;
+    background-color: var(--pay-feed-bg);
 }
 
 .pay-and-feed-container {
@@ -487,7 +554,7 @@ body {
 }
 
 .pay-and-feed-title {
-    color: #fff;
+    color: var(--pay-feed-text);
     padding-top: 5rem;
     font-size: 54px;
     font-style: normal;
@@ -500,7 +567,7 @@ body {
     display: flex;
     align-items: center;
     gap: 3rem;
-    color: #fff;
+    color: var(--pay-feed-text);
     width: 100%;
     margin-top: 5rem;
 }
@@ -522,7 +589,7 @@ body {
     display: flex;
     align-items: center;
     gap: 4rem;
-    color: #fff;
+    color: var(--pay-feed-text);
     margin-top: 4rem;
 }
 
@@ -654,7 +721,7 @@ body {
 }
 
 .user-opinion-msg {
-    background: #fff;
+    background: var(--opinion-msg-bg);
     border-radius: 6px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 
@@ -680,7 +747,7 @@ body {
 }
 
 .user-opinion-wrap h3 {
-    color: #00A092;
+    color: var(--opinion-msg-title);
     font-size: 90px;
     font-style: normal;
     font-weight: 800;
@@ -696,7 +763,7 @@ body {
     font-weight: 500;
     line-height: 130%;
     margin-bottom: 10px;
-    color: #000;
+    color: var(--opinion-msg-text);
 }
 
 .user-opinion-wrap p {
@@ -704,7 +771,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    color: #000;
+    color: var(--opinion-msg-text);
     margin-bottom: 2.5rem;
 }
 
@@ -716,7 +783,7 @@ body {
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
-    color: #000;
+    color: var(--opinion-msg-text);
 }
 
 .user-opinion-nav-btn {
@@ -793,7 +860,7 @@ body {
 }
 
 .user-opinion-msg {
-    background: #fff;
+    background: var(--opinion-msg-bg);
     border-radius: 6px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
     padding: 26px 28px 24px;
@@ -819,7 +886,7 @@ body {
 }
 
 .final-section-container h2 {
-    color: #00A092;
+    color: var(--title-color);
     text-align: center;
     font-size: 54px;
     font-style: normal;
@@ -832,7 +899,7 @@ body {
 }
 
 .final-section-container p {
-    color: #20113D;
+    color: var(--final-p-color);
     text-align: center;
     font-size: 26px;
     font-style: normal;
@@ -865,7 +932,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: #20113D;
+    background-color: var(--card-bg);
     border-radius: 5px;
     max-width: 420px;
     height: 658px;
@@ -880,7 +947,7 @@ body {
 }
 
 .card p {
-    color: #FFF;
+    color: var(--card-text);
     text-align: center;
     font-size: 18px;
     font-style: normal;
@@ -932,8 +999,9 @@ body {
     text-transform: uppercase;
 
     border-radius: 5px;
-    border: 1px solid #20113D;
+    border: 1px solid var(--border-color);
     background-color: transparent;
+    color: var(--text-color);
 }
 
 .final-choose-favourite:hover {
@@ -958,7 +1026,7 @@ body {
 }
 
 .welcome-popup-container {
-    background-color: #fff;
+    background-color: var(--popup-bg);
     border-radius: 5px;
     width: 1160px;
     height: 815px;
@@ -1005,7 +1073,7 @@ body {
 }
 
 .welcome-popup-container p {
-    color: #000;
+    color: var(--popup-text);
     text-align: center;
 
     font-size: 18px;
@@ -1053,12 +1121,13 @@ body {
 .donation-popup {
     width: 920px;
     height: 819px;
-    background: white;
+    background: var(--popup-bg);
+    color: var(--popup-text);
     position: relative;
 }
 
 .dontaionHeader {
-    background-color: #F58021;
+    background-color: var(--popup-header-bg);
     color: white;
     height: 135px;
 
@@ -1076,7 +1145,7 @@ body {
 .donationTitle,
 .billingInfoTitle,
 .paymentInfoTitle {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .donation-popup h3 {
@@ -1086,13 +1155,14 @@ body {
     line-height: 150%;
 
     margin: 3rem 0 0 6rem;
+    color: var(--popup-text);
 }
 
 .popupContentContainer {
     padding-top: 4rem;
     padding-left: 6rem;
     padding-right: 6rem;
-    color: #000;
+    color: var(--popup-text);
 }
 
 .popupContentContainer h4 {
@@ -1154,6 +1224,8 @@ body {
     padding: 0 18px;
     font-size: 16px;
     outline: none;
+    background-color: var(--input-bg);
+    color: var(--input-text);
 }
 
 .petSelctionPopup {
@@ -1181,7 +1253,8 @@ body {
     padding: 0 18px;
     font-size: 16px;
     outline: none;
-    background: #fff;
+    background: var(--select-bg);
+    color: var(--select-text);
 }
 
 .monthlyGift {
@@ -1192,6 +1265,7 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
+    color: var(--popup-text);
 }
 
 .monthlyGift input {
@@ -1219,11 +1293,11 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #CDE8E5;
+    background: var(--dot-inactive);
 }
 
 .dot.is-active {
-    background: #00A092;
+    background: var(--dot-active);
 }
 
 .popupNextBtn {
@@ -1274,7 +1348,8 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%
+    line-height: 150%;
+    color: var(--popup-text);
 }
 
 .userName input,
@@ -1287,6 +1362,9 @@ body {
     outline: none;
     margin-bottom: 1rem;
     text-align: left;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    border: 1px solid var(--input-border);
 }
 
 .userInformation p {
@@ -1295,6 +1373,7 @@ body {
     font-weight: 400;
     line-height: 150%;
     max-width: 620px;
+    color: var(--popup-text);
 }
 
 .userCard {
@@ -1310,25 +1389,31 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
+    color: var(--popup-text);
 }
 
 .userCardNumbers input {
     padding: 1.5rem 5rem;
     border-radius: 5px;
-    border: 1px solid;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--input-text);
 }
 
 .userCVV input {
     padding: 1.5rem 2rem;
     border-radius: 5px;
-    border: 1px solid;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--input-text);
 }
 
 .userCardDate h4 {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%
+    line-height: 150%;
+    color: var(--popup-text);
 }
 
 .userCardSections {
@@ -1342,7 +1427,9 @@ body {
 .userCardSections>* {
     padding: 1.3rem 2rem;
     border-radius: 5px;
-    border: 2px solid;
+    border: 2px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--input-text);
 }
 
 .popupStep {
@@ -1408,6 +1495,8 @@ body {
     margin-left: 6rem;
     padding: 10px;
     border-radius: 5px;
+    background-color: var(--savcard-bg);
+    color: var(--popup-text);
 }
 
 

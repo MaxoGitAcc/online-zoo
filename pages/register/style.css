@@ -1,3 +1,33 @@
+:root {
+    --register-page-bg: #0d0127;
+    --register-container-bg: #fff;
+    --register-title-color: #20113D;
+    --register-label-color: #20113D;
+    --register-input-bg: #fff;
+    --register-input-text: #20113D;
+    --register-input-border: #ccc;
+    --register-error-color: red;
+    --register-btn-bg: #20113D;
+    --register-btn-text: #fff;
+    --register-btn-hover-bg: #F58021;
+    --register-link-color: #F58021;
+}
+
+[data-theme="dark"] {
+    --register-page-bg: #0d0127;
+    --register-container-bg: #1b1430;
+    --register-title-color: #fff;
+    --register-label-color: #fff;
+    --register-input-bg: #2a2340;
+    --register-input-text: #fff;
+    --register-input-border: #5a5470;
+    --register-error-color: #ff6b6b;
+    --register-btn-bg: #F58021;
+    --register-btn-text: #fff;
+    --register-btn-hover-bg: #ff9a4a;
+    --register-link-color: #F58021;
+}
+
 html,
 body {
     height: 100%;
@@ -17,12 +47,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #0d0127;
+    background: var(--register-page-bg);
     padding: 5rem 20px;
 }
 
 .register-container {
-    background: #fff;
+    background: var(--register-container-bg);
     padding: 40px;
     border-radius: 8px;
     width: 100%;
@@ -34,7 +64,7 @@ body {
 
 .register-container h2 {
     text-align: center;
-    color: #20113D;
+    color: var(--register-title-color);
     margin-bottom: 8px;
 }
 
@@ -46,29 +76,31 @@ body {
 
 .input-wrap label {
     font-weight: 600;
-    color: #20113D;
+    color: var(--register-label-color);
 }
 
 .input-wrap input {
     padding: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--register-input-border);
     border-radius: 5px;
     font-size: 16px;
     outline: none;
+    background: var(--register-input-bg);
+    color: var(--register-input-text);
 }
 
 .input-wrap input.invalid {
-    border-color: red;
+    border-color: var(--register-error-color);
 }
 
 .input-error {
-    color: red;
+    color: var(--register-error-color);
     font-size: 13px;
     min-height: 18px;
 }
 
 .form-error {
-    color: red;
+    color: var(--register-error-color);
     font-size: 14px;
     text-align: center;
     min-height: 18px;
@@ -76,8 +108,8 @@ body {
 
 .register-btn {
     padding: 14px;
-    background: #20113D;
-    color: #fff;
+    background: var(--register-btn-bg);
+    color: var(--register-btn-text);
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -92,15 +124,16 @@ body {
 }
 
 .register-btn:hover:not(:disabled) {
-    background: #F58021;
+    background: var(--register-btn-hover-bg);
 }
 
 .register-container p {
     text-align: center;
+    color: var(--register-title-color);
 }
 
 .register-container a {
-    color: #F58021;
+    color: var(--register-link-color);
     font-weight: 600;
 }
 
