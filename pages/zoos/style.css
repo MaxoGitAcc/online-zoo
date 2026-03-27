@@ -15,7 +15,132 @@ body {
 :root {
     --side-nav-collapsed: 220px;
     --side-nav-open: 340px;
-    /* --side-nav-w: 220px; */
+
+    --zoo-page-bg: #ffffff;
+    --side-nav-bg: #20113D;
+    --side-nav-text: #fff;
+    --side-nav-divider: rgba(255, 255, 255, 0.35);
+
+    --go-live-bg: #F58021;
+    --go-live-text: #ffffff;
+
+    --selected-card-bg: #F58021;
+    --selected-card-active-bg: #ffffff;
+    --selected-card-text: #ffffff;
+    --selected-card-icon-open: #ffffff;
+
+    --bamboo-bg: #20113D;
+
+    --zoo-title-color: #00A092;
+
+    --donation-btn-bg: #F58021;
+    --donation-btn-text: #ffffff;
+    --donation-btn-hover-bg: #D26004;
+    --donation-btn-hover-shadow: 0 4px 30px 0 rgba(245, 128, 33, 0.30);
+
+    --live-cam-label-color: #ffffff;
+    --video-bg: #000000;
+    --video-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+
+    --section-title-color: #000000;
+
+    --more-live-arrow-border: rgba(32, 17, 61, 0.2);
+    --more-live-arrow-bg: #ffffff;
+    --more-live-arrow-color: #20113D;
+
+    --thumb-tag-border: #ffffff;
+    --thumb-tag-text: #ffffff;
+    --thumb-video-bg: #000000;
+    --thumb-video-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+    --thumb-active-border: #F58021;
+
+    --bamboo-title-color: #ffffff;
+    --bamboo-text-color: #ffffff;
+    --quick-donate-input-border: rgba(255, 255, 255, 0.25);
+    --quick-donate-input-bg: transparent;
+    --quick-donate-input-text: #ffffff;
+
+    --did-you-know-bg: rgba(255, 255, 255, 0.1);
+
+    --par-bg: transparent;
+    --par-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.25);
+    --par-title-color: #00A092;
+    --par-text-color: #20113D;
+
+    --desc-title-color: #20113D;
+    --desc-subtext-color: #20113D;
+    --desc-btn-color: #F58021;
+    --desc-btn-hover-color: #D26004;
+
+    --last-bottom-color: #20113D;
+
+    --modal-overlay-bg: rgba(0, 0, 0, 0.7);
+    --modal-bg: #ffffff;
+    --modal-close-color: #20113D;
+}
+
+[data-theme="dark"] {
+    --zoo-page-bg: #140a2e;
+    --side-nav-bg: #20113D;
+    --side-nav-text: #ffffff;
+    --side-nav-divider: rgba(255, 255, 255, 0.25);
+
+    --go-live-bg: #F58021;
+    --go-live-text: #ffffff;
+
+    --selected-card-bg: #F58021;
+    --selected-card-active-bg: #00A092;
+    --selected-card-text: #ffffff;
+    --selected-card-icon-open: #ffffff;
+
+    --bamboo-bg: #1f123d;
+
+    --zoo-title-color: #00A092;
+
+    --donation-btn-bg: #F58021;
+    --donation-btn-text: #ffffff;
+    --donation-btn-hover-bg: #D26004;
+    --donation-btn-hover-shadow: 0 4px 30px 0 rgba(245, 128, 33, 0.30);
+
+    --live-cam-label-color: #ffffff;
+    --video-bg: #000000;
+    --video-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+
+    --section-title-color: #ffffff;
+
+    --more-live-arrow-border: rgba(255, 255, 255, 0.2);
+    --more-live-arrow-bg: #1b1430;
+    --more-live-arrow-color: #ffffff;
+
+    --thumb-tag-border: #ffffff;
+    --thumb-tag-text: #ffffff;
+    --thumb-video-bg: #000000;
+    --thumb-video-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+    --thumb-active-border: #F58021;
+
+    --bamboo-title-color: #ffffff;
+    --bamboo-text-color: #ffffff;
+    --quick-donate-input-border: rgba(255, 255, 255, 0.25);
+    --quick-donate-input-bg: transparent;
+    --quick-donate-input-text: #ffffff;
+
+    --did-you-know-bg: var(--bamboo-bg);
+
+    --par-bg: var(--did-you-know-bg);
+    --par-shadow: none;
+    --par-title-color: #00A092;
+    --par-text-color: #ffffff;
+
+    --desc-title-color: #ffffff;
+    --desc-subtext-color: #d6d1e0;
+    --desc-btn-color: #F58021;
+    --desc-btn-hover-color: #ff9a4a;
+
+    --last-bottom-color: #ffffff;
+
+    --modal-overlay-bg: rgba(0, 0, 0, 0.7);
+    --modal-bg: #1b1430;
+    --modal-close-color: #ffffff;
 }
 
 .zoo-page,
@@ -28,6 +153,7 @@ body {
     display: flex;
     flex: 1;
     align-items: flex-start;
+    background: var(--zoo-page-bg);
 }
 
 .zoo-page-container {
@@ -40,8 +166,8 @@ body {
 
 .side-nav {
     margin: 0;
-    background-color: #20113D;
-    color: #fff;
+    background-color: var(--side-nav-bg);
+    color: var(--side-nav-text);
 
     width: var(--side-nav-collapsed);
     flex-shrink: 0;
@@ -65,7 +191,8 @@ body {
     left: 0;
 
     border-radius: 0 0 5px 0;
-    background: #F58021;
+    background: var(--go-live-bg);
+    color: var(--go-live-text);
     padding: 6px 20px;
 
     font-size: 18px;
@@ -101,7 +228,7 @@ body {
 .side-nav hr {
     border: none;
     height: 1px;
-    background: rgba(255, 255, 255, 0.35);
+    background: var(--side-nav-divider);
     margin: 0;
 }
 
@@ -122,12 +249,12 @@ body {
 }
 
 .selected-card .card-bg circle {
-    fill: #F58021;
+    fill: var(--selected-card-bg);
     transition: fill 0.2s ease;
 }
 
 .selected-card.is-active .card-bg circle {
-    fill: #fff !important;
+    fill: var(--selected-card-active-bg) !important;
 }
 
 .card-bg {
@@ -147,7 +274,7 @@ body {
 .card-text {
     display: none;
     margin: 0;
-    color: #fff;
+    color: var(--selected-card-text);
     font-size: 16px;
     font-weight: 500;
     line-height: 1.25;
@@ -176,7 +303,7 @@ body {
 }
 
 .side-nav.is-open .card-animal path {
-    fill: #fff !important;
+    fill: var(--selected-card-icon-open) !important;
 }
 
 .arrow-down {
@@ -193,7 +320,7 @@ body {
     padding: 28px 0 0;
 }
 
-.zoo-content> :not(.bamboo) {
+.zoo-content > :not(.bamboo) {
     width: 75%;
     margin: 0 auto;
 }
@@ -202,7 +329,7 @@ body {
     width: 110vw;
     margin-left: calc(50% - 60vw);
     margin-right: 0;
-    background: #20113D;
+    background: var(--bamboo-bg);
     margin-top: 10rem;
 }
 
@@ -216,7 +343,7 @@ body {
 
 .zoo-top h2 {
     margin: 0;
-    color: #00A092;
+    color: var(--zoo-title-color);
     font-size: 54px;
     font-style: normal;
     font-weight: 600;
@@ -236,8 +363,8 @@ body {
     border-radius: 5px;
     border: none;
 
-    background: #F58021;
-    color: #fff;
+    background: var(--donation-btn-bg);
+    color: var(--donation-btn-text);
 
     font-size: 18px;
     font-weight: 600;
@@ -251,8 +378,8 @@ body {
 }
 
 .donation-btn:hover {
-    background: #D26004;
-    box-shadow: 0 4px 30px 0 rgba(245, 128, 33, 0.30);
+    background: var(--donation-btn-hover-bg);
+    box-shadow: var(--donation-btn-hover-shadow);
 }
 
 .live-cam {
@@ -261,7 +388,7 @@ body {
 
 .live-cam-label {
     margin: 0 0 10px;
-    color: #fff;
+    color: var(--live-cam-label-color);
     font-size: 28px;
     font-style: normal;
     font-weight: 500;
@@ -273,9 +400,9 @@ body {
     width: 100%;
     border-radius: 6px;
     overflow: hidden;
-    background: #000;
+    background: var(--video-bg);
     aspect-ratio: 16 / 9;
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--video-shadow);
 }
 
 .live-cam-video iframe,
@@ -292,7 +419,7 @@ body {
 .more-live h3 {
     margin: 0 0 18px;
     text-align: center;
-    color: #000;
+    color: var(--section-title-color);
     font-size: 42px;
     font-style: normal;
     font-weight: 500;
@@ -313,9 +440,9 @@ body {
     height: 44px;
     border-radius: 50%;
 
-    border: 1px solid rgba(32, 17, 61, 0.2);
-    background: #fff;
-    color: #20113D;
+    border: 1px solid var(--more-live-arrow-border);
+    background: var(--more-live-arrow-bg);
+    color: var(--more-live-arrow-color);
 
     display: grid;
     place-items: center;
@@ -345,8 +472,8 @@ body {
 
     padding: 5px 15px;
     border-radius: 4px;
-    border: 1px solid white;
-    color: #fff;
+    border: 1px solid var(--thumb-tag-border);
+    color: var(--thumb-tag-text);
 
     font-size: 26px;
     font-style: normal;
@@ -359,10 +486,10 @@ body {
     overflow: hidden;
     aspect-ratio: 16 / 9;
 
-    background: #000;
+    background: var(--thumb-video-bg);
     border: 2px solid transparent;
 
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+    box-shadow: var(--thumb-video-shadow);
 }
 
 .thumb-video iframe {
@@ -374,14 +501,13 @@ body {
 }
 
 .thumb.is-active .thumb-video {
-    border-color: #F58021;
+    border-color: var(--thumb-active-border);
 }
-
 
 .bamboo {
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    background: #20113D;
+    background: var(--bamboo-bg);
     margin-top: 10rem;
 }
 
@@ -398,7 +524,7 @@ body {
 
 .bamboo-left h4 {
     margin: 0 0 10px;
-    color: #fff;
+    color: var(--bamboo-title-color);
     font-size: 42px;
     font-style: normal;
     font-weight: 500;
@@ -408,7 +534,7 @@ body {
 
 .bamboo-left p {
     margin: 0;
-    color: #fff;
+    color: var(--bamboo-text-color);
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -417,7 +543,7 @@ body {
 
 .bamboo-right h5 {
     margin: 0 0 12px;
-    color: #fff;
+    color: var(--bamboo-title-color);
     font-size: 26px;
     font-style: normal;
     font-weight: 500;
@@ -433,12 +559,12 @@ body {
 
 .quick-donate input {
     border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: transparent;
+    border: 1px solid var(--quick-donate-input-border);
+    background: var(--quick-donate-input-bg);
     padding: 30px;
     outline: none;
 
-    color: #fff;
+    color: var(--quick-donate-input-text);
     font-size: 16px;
 }
 
@@ -453,22 +579,21 @@ body {
     border: none;
     cursor: pointer;
 
-    background: #F58021;
-    color: #fff;
+    background: var(--donation-btn-bg);
+    color: var(--donation-btn-text);
     font-size: 24px;
     line-height: 1;
 }
 
 .quick-donate button:hover {
-    background: #D26004;
-    box-shadow: 0 4px 30px 0 rgba(245, 128, 33, 0.30);
+    background: var(--donation-btn-hover-bg);
+    box-shadow: var(--donation-btn-hover-shadow);
 }
 
 .did-you-know {
     margin-top: 10rem;
     padding: 20px;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
 }
@@ -481,14 +606,14 @@ body {
     justify-content: center;
     text-align: center;
     max-width: 1040px;
-    ;
-    box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: var(--par-shadow);
     border-radius: 5px;
     padding: 10px 0px;
+    background: var(--par-bg);
 }
 
 .par h2 {
-    color: #00A092;
+    color: var(--par-title-color);
     font-size: 42px;
     font-style: normal;
     font-weight: 500;
@@ -498,6 +623,7 @@ body {
 }
 
 .par p {
+    color: var(--par-text-color);
     font-size: 26px;
     font-style: normal;
     font-weight: 500;
@@ -518,6 +644,7 @@ body {
 }
 
 .desc h2 {
+    color: var(--desc-title-color);
     font-size: 26px;
     font-style: normal;
     font-weight: 500;
@@ -525,6 +652,7 @@ body {
 }
 
 .desc h2 span {
+    color: var(--desc-subtext-color);
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -535,7 +663,7 @@ body {
 .desc h2 button {
     background-color: transparent;
     border: none;
-    color: #F58021;
+    color: var(--desc-btn-color);
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
@@ -545,7 +673,7 @@ body {
 }
 
 .desc h2 button:hover {
-    color: #D26004;
+    color: var(--desc-btn-hover-color);
 }
 
 .last-bottom {
@@ -556,12 +684,13 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
+    color: var(--last-bottom-color);
 }
 
 .map-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.7);
+    background: var(--modal-overlay-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -571,7 +700,7 @@ body {
 }
 
 .map-modal-content {
-    background: #fff;
+    background: var(--modal-bg);
     border-radius: 8px;
     padding: 40px 20px 20px;
     width: 100%;
@@ -591,8 +720,8 @@ body {
     font-size: 20px;
     cursor: pointer;
     z-index: 10;
+    color: var(--modal-close-color);
 }
-
 
 /* ******* ZOOS RESPONSIVE ******* */
 @media (max-width: 1200px) {
@@ -671,7 +800,6 @@ body {
         --side-nav-open: 280px;
     }
 
-    /* ── Side nav becomes horizontal strip ── */
     .zoo-page-container {
         flex-direction: column;
     }
@@ -747,7 +875,6 @@ body {
         transform: translate(-50%, -50%);
     }
 
-    /* ── Zoo content ── */
     .zoo-content {
         width: 100%;
         padding: 16px 0;
@@ -796,7 +923,6 @@ body {
         padding: 3px 8px;
     }
 
-    /* ── Bamboo ── */
     .bamboo {
         width: 100%;
         margin-left: 0;
@@ -847,7 +973,6 @@ body {
         width: auto;
     }
 
-    /* ── Did you know ── */
     .did-you-know {
         margin-top: 4rem;
         padding: 12px;

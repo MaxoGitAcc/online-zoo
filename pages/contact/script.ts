@@ -1,4 +1,7 @@
 import { initHeader } from "../../src/utils/header";
+import { initTheme } from "../../src/utils/theme";
+
+initTheme();
 
 fetch("/assets/components/header.html")
   .then((res) => res.text())
