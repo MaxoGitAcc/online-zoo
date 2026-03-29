@@ -217,12 +217,43 @@ function setupFeedbackButtons(): void {
 }
 
 // ******** POPUP ********* //
+function openAnimalsPopup() {
+  const tpl = document.getElementById("animals-popup") as HTMLTemplateElement;
+  if (!tpl) return;
+
+  const existing = document.querySelector("[data-animals-popup-overlay]");
+  if (existing) existing.remove();
+
+  document.body.appendChild(tpl.content.cloneNode(true));
+
+  const overlay = document.querySelector<HTMLElement>("[data-animals-popup-overlay]");
+  const closeBtn = document.querySelector<HTMLElement>(".animals-popup-close");
+  const donateBtn = document.querySelector<HTMLElement>(".ap-donate-now-btn");
+  if (!overlay || !closeBtn) return;
+
+  const closeAnimalsPopup = () => overlay.remove();
+
+  closeBtn.addEventListener("click", closeAnimalsPopup);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeAnimalsPopup();
+  });
+  document.addEventListener("keydown", function escHandler(e) {
+    if (e.key === "Escape") {
+      closeAnimalsPopup();
+      document.removeEventListener("keydown", escHandler);
+    }
+  });
+
+  // "Donate Now" closes this popup and opens the donation popup
+  donateBtn?.addEventListener("click", () => {
+    closeAnimalsPopup();
+    document.querySelector<HTMLElement>(".donate-btn")?.click();
+  });
+}
+
 function openWelcomePopup() {
   const tpl = document.getElementById("welcome-popup") as HTMLTemplateElement;
-  if (!tpl) {
-    console.error("welcome-popup template not found");
-    return;
-  }
+  if (!tpl) return;
 
   const existing = document.querySelector("[data-popup-overlay]");
   if (existing) existing.remove();
@@ -232,18 +263,16 @@ function openWelcomePopup() {
   const overlay = document.querySelector<HTMLElement>("[data-popup-overlay]");
   const closeBtn = document.querySelector<HTMLElement>("[data-popup-close]");
   if (!overlay || !closeBtn) return;
-  const amountBtns = document.querySelectorAll<HTMLButtonElement>(
-    ".popup1-btns button",
-  );
 
-  const closePopup = () => overlay.remove();
+  const closePopup = () => {
+    overlay.remove();
+    openAnimalsPopup();
+  };
 
   closeBtn.addEventListener("click", closePopup);
-
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closePopup();
   });
-
   document.addEventListener("keydown", function escHandler(e) {
     if (e.key === "Escape") {
       closePopup();
@@ -251,14 +280,11 @@ function openWelcomePopup() {
     }
   });
 
+  const amountBtns = document.querySelectorAll<HTMLButtonElement>(".popup1-btns button");
   amountBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const amount = btn.dataset.amount;
-      if (amount === "other") {
-        alert("Other amount clicked");
-      } else {
-        alert(`You selected $${amount}`);
-      }
+      overlay.remove();
+      document.querySelector<HTMLElement>(".donate-btn")?.click();
     });
   });
 }
